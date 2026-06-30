@@ -15,7 +15,7 @@
         <link rel="canonical" href="https://stahe.github.io/it-vbscript-janv-2002/gestione-degli-errori.html">
       
       
-        <link rel="prev" href="nozioni-di-base-sulla-programmazione-in-vbscript.html">
+        <link rel="prev" href="nozioni-di-base-sulla-programmazione-vbscript.html">
       
       
         <link rel="next" href="funzioni-e-procedure.html">
@@ -56,6 +56,8 @@
     
     
       <link rel="stylesheet" href="stylesheets/focus.css">
+    
+      <link rel="stylesheet" href="stylesheets/bidi.css">
     
     <script>__md_scope=new URL(".",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
@@ -330,14 +332,14 @@
   
   
     <li class="md-nav__item">
-      <a href="contesti-di-esecuzione-vbscript.html" class="md-nav__link">
+      <a href="i-contesti-di-esecuzione-di-vbscript.html" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    2. Contesti di esecuzione VBSCRIPT
+    2. I contesti di esecuzione di VBSCRIPT
   
 
     
@@ -357,14 +359,14 @@
   
   
     <li class="md-nav__item">
-      <a href="nozioni-di-base-sulla-programmazione-in-vbscript.html" class="md-nav__link">
+      <a href="nozioni-di-base-sulla-programmazione-vbscript.html" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    3. Nozioni di base sulla programmazione in VBScript
+    3. Nozioni di base sulla programmazione VBSCRIPT
   
 
     
@@ -444,10 +446,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#41-determinare-il-tipo-esatto-di-un-elemento-di-dati" class="md-nav__link">
+  <a href="#41-conoscere-il-tipo-esatto-di-un-dato" class="md-nav__link">
     <span class="md-ellipsis">
       
-        4.1. Determinare il tipo esatto di un elemento di dati
+        4.1. Conoscere il tipo esatto di un dato
       
     </span>
   </a>
@@ -455,10 +457,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#42-espressioni-regolari" class="md-nav__link">
+  <a href="#42-le-espressioni-regolari" class="md-nav__link">
     <span class="md-ellipsis">
       
-        4.2. Espressioni regolari
+        4.2. Le espressioni regolari
       
     </span>
   </a>
@@ -466,10 +468,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#43-gestione-degli-errori-di-runtime" class="md-nav__link">
+  <a href="#43-intercettare-gli-errori-di-esecuzione" class="md-nav__link">
     <span class="md-ellipsis">
       
-        4.3. Gestione degli errori di runtime
+        4.3. Intercettare gli errori di esecuzione
       
     </span>
   </a>
@@ -529,14 +531,14 @@
   
   
     <li class="md-nav__item">
-      <a href="file-di-testo.html" class="md-nav__link">
+      <a href="i-file-di-testo.html" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    6. File di testo
+    6. I file di testo
   
 
     
@@ -566,69 +568,71 @@
 
 
 
-<p><a id="refheading1877332734444"></a>
-<a id="toc535044810"></a></p>
+<p><span id="refheading1877332734444" name="refheading1877332734444" class="odt-bookmark-anchor"></span>
+<span id="toc535044810" name="toc535044810" class="odt-bookmark-anchor"></span></p>
 <h1 id="4-gestione-degli-errori">4. <span style="color: #365f91">Gestione degli errori</span></h1>
-<p>In programmazione, esiste una regola assoluta: un programma non deve mai &quot;bloccarsi&quot; in modo imprevisto. Tutti gli errori che possono verificarsi durante l&#x27;esecuzione del programma devono essere gestiti e devono essere generati messaggi di errore significativi.</p>
-<p>Se torniamo all&#x27;esempio delle imposte discusso in precedenza, cosa succede se l&#x27;utente inserisce un valore qualsiasi per il numero di figli? Diamo un&#x27;occhiata a questo esempio:</p>
+<p>Nella programmazione esiste una regola assoluta: un programma non deve mai «bloccarsi» in modo imprevisto. Tutti gli errori che possono verificarsi durante l’esecuzione del programma devono essere gestiti e devono essere generati messaggi di errore significativi.</p>
+<p>Se riprendiamo l’esempio delle imposte trattato in precedenza, cosa succede se l’utente inserisce un valore qualsiasi per il numero di figli? Vediamo questo esempio:</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-1">1</a></span>
 <span class="normal"><a href="#__codelineno-0-2">2</a></span>
 <span class="normal"><a href="#__codelineno-0-3">3</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1"></a>C:\&gt;cscript impots1.vbs o xyzt 200000
 <a id="__codelineno-0-2" name="__codelineno-0-2"></a>
 <a id="__codelineno-0-3" name="__codelineno-0-3"></a>C:\impots1.vbs(33, 3) Erreur d&#39;exécution Microsoft VBScript: Type incompatible: &#39;cint&#39;
 </code></pre></div></td></tr></table></div>
-<p>Questo è ciò che viene definito un crash selvaggio. L&#x27;istruzione <span style="color: #000000">enfants=cint(wscript.arguments(1)) </span>ha causato un &quot;crash&quot; <span style="color: #000000">perché </span><em><span style="color: #000000">arguments(1) </span></em><span style="color: #000000">conteneva la stringa &quot;xyzt&quot;.</span></p>
-<p>Prima di utilizzare una variante di cui non si conosce la natura esatta, è necessario verificarne il sottotipo esatto. Ci sono diversi modi per farlo:</p>
+<p>Questo è ciò che si definisce un &quot;arresto anomalo&quot;. Si è verificato un &quot;arresto anomalo&quot; nell’istruzione <span style="color: #000000"> enfants=cint(wscript.arguments(1)) poiché </span><em><span style="color: #000000">arguments(1) </span></em><span style="color: #000000">conteneva la stringa &quot;xyzt&quot;.</span></p>
+<p>Prima di utilizzare una variante di cui non si conosce la natura esatta, è necessario verificarne il sottotipo esatto. Ciò può essere fatto in diversi modi:</p>
 <ul>
-  <li>verificare il tipo effettivo dei dati contenuti in una variante utilizzando le funzioni <i>vartype </i>o <i>typename</i>
+  <li>verificare il tipo effettivo dei dati contenuti in una variabile con le funzioni <i>vartype </i>o <i>typename</i>
   </li>
-  <li>utilizzare un&#x27;espressione regolare per verificare che il contenuto del variante corrisponda a uno schema specifico
+  <li>utilizzare un&#x27;espressione regolare per verificare che il contenuto del variante corrisponda a un determinato modello
   </li>
-  <li>lasciare che l&#x27;errore si verifichi, quindi intercettarlo e gestirlo
+  <li>lasciare che l’errore si verifichi, intercettarlo e gestirlo
   </li>
 </ul>
 
-<p>Esamineremo questi diversi metodi.</p>
-<p><a id="refheading1877532734444"></a>
-<a id="toc535044811"></a></p>
-<h2 id="41-determinare-il-tipo-esatto-di-un-elemento-di-dati">4.1. <span style="color: #4f81bd">Determinare il tipo esatto di un elemento di dati</span></h2>
-<p>Ricordate che le funzioni <em>vartype</em> e <em>varname</em> consentono di determinare il tipo esatto di un dato. Questo non è sempre molto utile. Ad esempio, quando leggiamo i dati digitati sulla tastiera, le funzioni <em>vartype</em> e <em>typename</em> ci diranno che si tratta di una stringa, poiché tutti i dati digitati sulla tastiera vengono trattati come tali. Questo non ci dice se questa stringa possa, ad esempio, essere considerata un numero valido. Utilizziamo quindi altre funzioni per accedere a questo tipo di informazioni:</p>
-<table class="odt-table" style="border-collapse: collapse; width: 100%; margin-bottom: 1em;"><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top;"><div style="margin:0 0 0.5em 0"><b>isNumeric(espressione)</b></div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top;"><div style="margin:0 0 0.5em 0">restituisce true se l&#x27;espressione può essere utilizzata come numero</div></td></tr><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top;"><div style="margin:0 0 0.5em 0"><b>isDate(espressione)</b></div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top;"><div style="margin:0 0 0.5em 0">restituisce true se l&#x27;espressione può essere utilizzata come data</div></td></tr><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top;"><div style="margin:0 0 0.5em 0"><b>isEmpty(var)</b></div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top;"><div style="margin:0 0 0.5em 0">restituisce true se la variabile var non è stata inizializzata</div></td></tr><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top;"><div style="margin:0 0 0.5em 0"><b>isNull(var)</b></div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top;"><div style="margin:0 0 0.5em 0">restituisce true se la variabile var contiene dati non validi</div></td></tr><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top;"><div style="margin:0 0 0.5em 0"><b>isArray(var)</b></div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top;"><div style="margin:0 0 0.5em 0">restituisce true se var è un array</div></td></tr><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top;"><div style="margin:0 0 0.5em 0"><b>isObject(var)</b></div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top;"><div style="margin:0 0 0.5em 0">restituisce true se var è un oggetto</div></td></tr></table>
+<p>Esaminiamo questi diversi metodi.</p>
+<p><span id="refheading1877532734444" name="refheading1877532734444" class="odt-bookmark-anchor"></span>
+<span id="toc535044811" name="toc535044811" class="odt-bookmark-anchor"></span></p>
+<h2 id="41-conoscere-il-tipo-esatto-di-un-dato">4.1. <span style="color: #4f81bd">Conoscere il tipo esatto di un dato</span></h2>
+<p>Ricordiamo che le funzioni <em>vartype</em> o <em>varname</em> consentono di conoscere il tipo esatto di un dato. Ciò non sempre ci è di grande aiuto. Ad esempio, quando leggiamo un dato digitato dalla tastiera, le funzioni <em>vartype</em> e <em>typename</em> ci diranno che si tratta di una stringa di caratteri, poiché è così che viene considerato qualsiasi dato digitato dalla tastiera. Ciò non ci dice se questa stringa possa, ad esempio, essere considerata un numero valido. Si utilizzano quindi altre funzioni per accedere a questo tipo di informazioni:</p>
+<table class="odt-table" style="border-collapse: collapse; width: 100%; margin-bottom: 1em;"><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0"><b>isNumeric(espressione)</b></div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0">restituisce vero se l’espressione può essere utilizzata come numero</div></td></tr><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0"><b>isDate(espressione)</b></div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0">restituisce vero se l’espressione può essere utilizzata come data</div></td></tr><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0"><b>isEmpty(var)</b></div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0">restituisce vero se la variabile var non è stata inizializzata</div></td></tr><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0"><b>isNull(var)</b></div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0">restituisce vero se la variabile var contiene dati non validi</div></td></tr><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0"><b>isArray(var)</b></div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0">restituisce vero se var è un array</div></td></tr><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0"><b>isObject(var)</b></div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0">restituisce vero se var è un oggetto</div></td></tr></table>
 
-<p>L&#x27;esempio seguente richiede all&#x27;utente di inserire dati tramite la tastiera finché non vengono riconosciuti come numeri:</p>
-<p><strong>Programma</strong></p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="c1">&#39; read data until it is recognized as a number</span>
+<p>L&#x27;esempio seguente richiede di digitare un dato dalla tastiera finché non viene riconosciuto come un numero:</p>
+<table class="odt-table" style="border-collapse: collapse; width: 100%; margin-bottom: 1em;"><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0"><b>Programma</b></div></td></tr><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div markdown="block">
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="c1">&#39; si legge un dato finché non viene riconosciuto come numero</span>
 <a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>
 <a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="k">Option</span><span class="w"> </span><span class="k">Explicit</span>
 <a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>
 <a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="kd">Dim</span><span class="w"> </span><span class="nv">fini</span><span class="p">,</span><span class="w"> </span><span class="nv">nombre</span>
 <a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a>
-<a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a><span class="c1">&#39; loop until the data entered is correct</span>
-<a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a><span class="c1">&#39; the loop is controlled by a finite boolean, set to false at the start (= it&#39;s not finite)</span>
+<a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a><span class="c1">&#39; si esegue un ciclo finché il dato inserito non è corretto</span>
+<a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a><span class="c1">&#39; il ciclo è controllato da una variabile booleana finita, impostata su falso all&#39;inizio (= non è finito)</span>
 <a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a>
 <a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a><span class="n">fini</span><span class="o">=</span><span class="no">false</span>
 <a id="__codelineno-1-11" name="__codelineno-1-11" href="#__codelineno-1-11"></a><span class="k">Do</span><span class="w"> </span><span class="k">While</span><span class="w"> </span><span class="ow">Not</span><span class="w"> </span><span class="n">fini</span>
-<a id="__codelineno-1-12" name="__codelineno-1-12" href="#__codelineno-1-12"></a><span class="w">    </span><span class="c1">&#39; we ask for the number</span>
+<a id="__codelineno-1-12" name="__codelineno-1-12" href="#__codelineno-1-12"></a><span class="w">    </span><span class="c1">&#39; si richiede il numero</span>
 <a id="__codelineno-1-13" name="__codelineno-1-13" href="#__codelineno-1-13"></a><span class="w">    </span><span class="n">wscript</span><span class="p">.</span><span class="n">stdout</span><span class="p">.</span><span class="n">write</span><span class="w"> </span><span class="s2">&quot;Tapez un nombre : &quot;</span>
-<a id="__codelineno-1-14" name="__codelineno-1-14" href="#__codelineno-1-14"></a><span class="w">    </span><span class="c1">&#39; we read it</span>
+<a id="__codelineno-1-14" name="__codelineno-1-14" href="#__codelineno-1-14"></a><span class="w">    </span><span class="c1">&#39; lo si legge</span>
 <a id="__codelineno-1-15" name="__codelineno-1-15" href="#__codelineno-1-15"></a><span class="w">    </span><span class="n">nombre</span><span class="o">=</span><span class="n">wscript</span><span class="p">.</span><span class="n">stdin</span><span class="p">.</span><span class="n">readLine</span>
-<a id="__codelineno-1-16" name="__codelineno-1-16" href="#__codelineno-1-16"></a><span class="w">    </span><span class="c1">&#39; the type is necessarily string when read</span>
+<a id="__codelineno-1-16" name="__codelineno-1-16" href="#__codelineno-1-16"></a><span class="w">    </span><span class="c1">&#39; il tipo è necessariamente stringa durante la lettura</span>
 <a id="__codelineno-1-17" name="__codelineno-1-17" href="#__codelineno-1-17"></a><span class="w">    </span><span class="n">wscript</span><span class="p">.</span><span class="n">echo</span><span class="w"> </span><span class="s2">&quot;Type de la donnée lue : &quot;</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="nb">typename</span><span class="p">(</span><span class="n">nombre</span><span class="p">)</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="s2">&quot;,&quot;</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="nb">vartype</span><span class="p">(</span><span class="n">nombre</span><span class="p">)</span>
-<a id="__codelineno-1-18" name="__codelineno-1-18" href="#__codelineno-1-18"></a><span class="w">    </span><span class="c1">&#39; test the actual type of data read</span>
-<a id="__codelineno-1-19" name="__codelineno-1-19" href="#__codelineno-1-19"></a><span class="w">    </span><span class="k">If</span><span class="w"> </span><span class="nb">isNumeric</span><span class="p">(</span><span class="n">nombre</span><span class="p">)</span><span class="w"> </span><span class="k">Then</span>
+<a id="__codelineno-1-18" name="__codelineno-1-18" href="#__codelineno-1-18"></a><span class="w">    </span><span class="c1">&#39; si verifica il tipo effettivo del dato letto</span>
+<a id="__codelineno-1-19" name="__codelineno-1-19" href="#__codelineno-1-19"></a><span class="w">    </span><span class="k">If</span><span class="w"> </span><span class="nb">isNumeric</span><span class="p">(</span><span class="n">nombre</span><span class="p">)</span><span class="w"> </span><span class="k">Then</span><span class="w"> </span>
 <a id="__codelineno-1-20" name="__codelineno-1-20" href="#__codelineno-1-20"></a><span class="w">        </span><span class="n">fini</span><span class="o">=</span><span class="no">true</span>
 <a id="__codelineno-1-21" name="__codelineno-1-21" href="#__codelineno-1-21"></a><span class="w">    </span><span class="k">Else</span>
 <a id="__codelineno-1-22" name="__codelineno-1-22" href="#__codelineno-1-22"></a><span class="w">        </span><span class="n">wscript</span><span class="p">.</span><span class="n">echo</span><span class="w"> </span><span class="s2">&quot;Erreur, vous n&#39;avez pas tapé un nombre. Recommencez svp...&quot;</span>
 <a id="__codelineno-1-23" name="__codelineno-1-23" href="#__codelineno-1-23"></a><span class="w">    </span><span class="k">End</span><span class="w"> </span><span class="k">If</span>
 <a id="__codelineno-1-24" name="__codelineno-1-24" href="#__codelineno-1-24"></a><span class="k">Loop</span>
 <a id="__codelineno-1-25" name="__codelineno-1-25" href="#__codelineno-1-25"></a>
-<a id="__codelineno-1-26" name="__codelineno-1-26" href="#__codelineno-1-26"></a><span class="c1">&#39; confirmation</span>
+<a id="__codelineno-1-26" name="__codelineno-1-26" href="#__codelineno-1-26"></a><span class="c1">&#39; conferma</span>
 <a id="__codelineno-1-27" name="__codelineno-1-27" href="#__codelineno-1-27"></a><span class="n">wscript</span><span class="p">.</span><span class="n">echo</span><span class="w"> </span><span class="s2">&quot;Merci pour le nombre &quot;</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">nombre</span>
 <a id="__codelineno-1-28" name="__codelineno-1-28" href="#__codelineno-1-28"></a>
-<a id="__codelineno-1-29" name="__codelineno-1-29" href="#__codelineno-1-29"></a><span class="c1">&#39; and end</span>
+<a id="__codelineno-1-29" name="__codelineno-1-29" href="#__codelineno-1-29"></a><span class="c1">&#39; e fine</span>
 <a id="__codelineno-1-30" name="__codelineno-1-30" href="#__codelineno-1-30"></a><span class="n">wscript</span><span class="p">.</span><span class="n">quit</span><span class="w"> </span><span class="mi">0</span>
 </code></pre></div>
-<p><strong>Risultati</strong></p>
+</div></td></tr></table>
+
+<table class="odt-table" style="border-collapse: collapse; width: 100%; margin-bottom: 1em;"><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0"><b>Risultati</b></div></td></tr><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div markdown="block">
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-2-1">1</a></span>
 <span class="normal"><a href="#__codelineno-2-2">2</a></span>
 <span class="normal"><a href="#__codelineno-2-3">3</a></span>
@@ -641,41 +645,43 @@
 <a id="__codelineno-2-5" name="__codelineno-2-5"></a>Type de la donnée lue : String,8
 <a id="__codelineno-2-6" name="__codelineno-2-6"></a>Merci pour le nombre -12
 </code></pre></div></td></tr></table></div>
-<p>La funzione <em>isNumeric</em> non ci dice se un&#x27;espressione è un numero intero o meno. Per ottenere questa informazione, sono necessari ulteriori test. L&#x27;esempio seguente richiede un numero intero maggiore di 0:</p>
-<p><strong>Programma</strong></p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="c1">&#39; read data until it is recognized as an integer &gt;0</span>
+</div></td></tr></table>
+
+<p>La funzione <em>isNumeric</em> non ci dice se un&#x27;espressione è un numero intero o meno. Per ottenere questa informazione, è necessario eseguire ulteriori test. L&#x27;esempio seguente richiede un numero intero &gt;0:</p>
+<table class="odt-table" style="border-collapse: collapse; width: 100%; margin-bottom: 1em;"><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0"><b>Programma</b></div></td></tr><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div markdown="block">
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="c1">&#39; lettura di un dato fino a quando non viene riconosciuto come un numero intero &gt;0</span>
 <a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>
 <a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="k">Option</span><span class="w"> </span><span class="k">Explicit</span>
 <a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a>
 <a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a><span class="kd">Dim</span><span class="w"> </span><span class="nv">fini</span><span class="p">,</span><span class="w"> </span><span class="nv">nombre</span>
 <a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a>
-<a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a><span class="c1">&#39; loop until the data entered is correct</span>
-<a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a><span class="c1">&#39; the loop is controlled by a finite boolean, set to false at the start (= it&#39;s not finite)</span>
+<a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a><span class="c1">&#39; si esegue un ciclo finché il dato inserito non è corretto</span>
+<a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a><span class="c1">&#39; il ciclo è controllato da una variabile booleana finita, impostata inizialmente su falso (= non è finito)</span>
 <a id="__codelineno-3-9" name="__codelineno-3-9" href="#__codelineno-3-9"></a>
 <a id="__codelineno-3-10" name="__codelineno-3-10" href="#__codelineno-3-10"></a><span class="n">fini</span><span class="o">=</span><span class="no">false</span>
 <a id="__codelineno-3-11" name="__codelineno-3-11" href="#__codelineno-3-11"></a><span class="k">Do</span><span class="w"> </span><span class="k">While</span><span class="w"> </span><span class="ow">Not</span><span class="w"> </span><span class="n">fini</span>
-<a id="__codelineno-3-12" name="__codelineno-3-12" href="#__codelineno-3-12"></a><span class="w">    </span><span class="c1">&#39; we ask for the number</span>
+<a id="__codelineno-3-12" name="__codelineno-3-12" href="#__codelineno-3-12"></a><span class="w">    </span><span class="c1">&#39; si richiede il numero</span>
 <a id="__codelineno-3-13" name="__codelineno-3-13" href="#__codelineno-3-13"></a><span class="w">    </span><span class="n">wscript</span><span class="p">.</span><span class="n">stdout</span><span class="p">.</span><span class="n">write</span><span class="w"> </span><span class="s2">&quot;Tapez un nombre entier &gt;0: &quot;</span>
-<a id="__codelineno-3-14" name="__codelineno-3-14" href="#__codelineno-3-14"></a><span class="w">    </span><span class="c1">&#39; we read it</span>
+<a id="__codelineno-3-14" name="__codelineno-3-14" href="#__codelineno-3-14"></a><span class="w">    </span><span class="c1">&#39; lo si legge</span>
 <a id="__codelineno-3-15" name="__codelineno-3-15" href="#__codelineno-3-15"></a><span class="w">    </span><span class="n">nombre</span><span class="o">=</span><span class="n">wscript</span><span class="p">.</span><span class="n">stdin</span><span class="p">.</span><span class="n">readLine</span>
-<a id="__codelineno-3-16" name="__codelineno-3-16" href="#__codelineno-3-16"></a><span class="w">    </span><span class="c1">&#39; test the actual type of data read</span>
+<a id="__codelineno-3-16" name="__codelineno-3-16" href="#__codelineno-3-16"></a><span class="w">    </span><span class="c1">&#39; si verifica se il dato letto è di tipo reale</span>
 <a id="__codelineno-3-17" name="__codelineno-3-17" href="#__codelineno-3-17"></a><span class="w">    </span><span class="k">If</span><span class="w"> </span><span class="nb">isNumeric</span><span class="p">(</span><span class="n">nombre</span><span class="p">)</span><span class="w"> </span><span class="k">Then</span>
-<a id="__codelineno-3-18" name="__codelineno-3-18" href="#__codelineno-3-18"></a><span class="w">        </span><span class="c1">&#39; is it a positive integer (number equal to its integer part)?</span>
+<a id="__codelineno-3-18" name="__codelineno-3-18" href="#__codelineno-3-18"></a><span class="w">        </span><span class="c1">&#39; È un numero intero (pari alla sua parte intera) positivo?</span>
 <a id="__codelineno-3-19" name="__codelineno-3-19" href="#__codelineno-3-19"></a><span class="w">        </span><span class="k">If</span><span class="w"> </span><span class="p">(</span><span class="n">nombre</span><span class="o">-</span><span class="nb">int</span><span class="p">(</span><span class="n">nombre</span><span class="p">))</span><span class="o">=</span><span class="mi">0</span><span class="w"> </span><span class="ow">And</span><span class="w"> </span><span class="n">nombre</span><span class="o">&gt;</span><span class="mi">0</span><span class="w"> </span><span class="k">Then</span>
 <a id="__codelineno-3-20" name="__codelineno-3-20" href="#__codelineno-3-20"></a><span class="w">            </span><span class="n">fini</span><span class="o">=</span><span class="no">true</span>
 <a id="__codelineno-3-21" name="__codelineno-3-21" href="#__codelineno-3-21"></a><span class="w">        </span><span class="k">End</span><span class="w"> </span><span class="k">If</span>
 <a id="__codelineno-3-22" name="__codelineno-3-22" href="#__codelineno-3-22"></a><span class="w">    </span><span class="k">End</span><span class="w"> </span><span class="k">If</span>
-<a id="__codelineno-3-23" name="__codelineno-3-23" href="#__codelineno-3-23"></a><span class="w">    </span><span class="c1">&#39; possible error msg</span>
+<a id="__codelineno-3-23" name="__codelineno-3-23" href="#__codelineno-3-23"></a><span class="w">    </span><span class="c1">&#39; eventuale messaggio di errore</span>
 <a id="__codelineno-3-24" name="__codelineno-3-24" href="#__codelineno-3-24"></a><span class="w">    </span><span class="k">If</span><span class="w"> </span><span class="ow">Not</span><span class="w"> </span><span class="n">fini</span><span class="w"> </span><span class="k">Then</span><span class="w"> </span><span class="n">wscript</span><span class="p">.</span><span class="n">echo</span><span class="w"> </span><span class="s2">&quot;Erreur, vous n&#39;avez pas tapé un nombre entier &gt;0. Recommencez svp...&quot;</span>
 <a id="__codelineno-3-25" name="__codelineno-3-25" href="#__codelineno-3-25"></a><span class="k">Loop</span>
 <a id="__codelineno-3-26" name="__codelineno-3-26" href="#__codelineno-3-26"></a>
-<a id="__codelineno-3-27" name="__codelineno-3-27" href="#__codelineno-3-27"></a><span class="c1">&#39; confirmation</span>
+<a id="__codelineno-3-27" name="__codelineno-3-27" href="#__codelineno-3-27"></a><span class="c1">&#39; conferma</span>
 <a id="__codelineno-3-28" name="__codelineno-3-28" href="#__codelineno-3-28"></a><span class="n">wscript</span><span class="p">.</span><span class="n">echo</span><span class="w"> </span><span class="s2">&quot;Merci pour le nombre entier &gt;0 : &quot;</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">nombre</span>
 <a id="__codelineno-3-29" name="__codelineno-3-29" href="#__codelineno-3-29"></a>
-<a id="__codelineno-3-30" name="__codelineno-3-30" href="#__codelineno-3-30"></a><span class="c1">&#39; and end</span>
+<a id="__codelineno-3-30" name="__codelineno-3-30" href="#__codelineno-3-30"></a><span class="c1">&#39; e fine</span>
 <a id="__codelineno-3-31" name="__codelineno-3-31" href="#__codelineno-3-31"></a><span class="n">wscript</span><span class="p">.</span><span class="n">quit</span><span class="w"> </span><span class="mi">0</span>
 </code></pre></div>
-<p><strong><span style="color: #000000">Risultati</span></strong></p>
+</div></td></tr><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0"><b>Risultati</b></div></td></tr><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div markdown="block">
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-4-1">1</a></span>
 <span class="normal"><a href="#__codelineno-4-2">2</a></span>
 <span class="normal"><a href="#__codelineno-4-3">3</a></span>
@@ -692,132 +698,134 @@
 <a id="__codelineno-4-7" name="__codelineno-4-7"></a>Tapez un nombre entier &gt;0: 12
 <a id="__codelineno-4-8" name="__codelineno-4-8"></a>Merci pour le nombre entier &gt;0 : 12
 </code></pre></div></td></tr></table></div>
-<p><strong>Commenti:</strong></p>
+</div></td></tr></table>
+
+<p><strong>Note:</strong></p>
 <ul>
-  <li><i>int(numero) </i>restituisce la parte intera di un numero. Un numero uguale alla sua parte intera è un numero intero.
+  <li><i>int(nombre) </i>restituisce la parte intera di un numero. Un numero uguale alla sua parte intera è un numero intero.
   </li>
-  <li>È interessante notare che abbiamo dovuto utilizzare il test <span style="color: #00007f">If </span><span style="color: #000000">(numero - int(numero)) = 0 </span><span style="color: #00007f">And </span><span style="color: #000000">numero &gt; 0 </span>perché il test <span style="color: #00007f">If </span><span style="color: #000000">numero = int(numero) </span><span style="color: #00007f">And </span><span style="color: #000000">numero &gt; 0 </span>non ha prodotto i risultati attesi. Non ha rilevato i numeri interi positivi. Lasciamo al lettore il compito di scoprire il motivo.
+  <li>È interessante notare che è stato necessario utilizzare il test <span style="color: #00007f">If </span><span style="color: #000000">(numero - int(numero)) = 0 </span><span style="color: #00007f">And </span><span style="color: #000000">numero &gt; 0 </span>perché il test <span style="color: #00007f">If </span><span style="color: #000000">numero = int(numero) </span><span style="color: #00007f">And </span><span style="color: #000000">numero &gt; 0 </span>non forniva i risultati attesi. Non rilevava i numeri interi positivi. Lasciamo al lettore il compito di scoprire il motivo.
   </li>
-  <li>Il test <span style="color: #00007f">If </span><span style="color: #000000">(numero - int(numero)) = 0 </span>non è del tutto affidabile. Diamo un&#x27;occhiata al seguente esempio:
+  <li>Il test <span style="color: #00007f">If </span><span style="color: #000000">(numero - int(numero)) = 0 </span>non è del tutto affidabile. Osserviamo il seguente esempio di esecuzione:
   </li>
 </ul>
 
-<table class="odt-table" style="border-collapse: collapse; width: 100%; margin-bottom: 1em;"><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top;"><div markdown="block">
-<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>Inserisci un numero intero &gt;0: 4.0000000000000000000000001
+<table class="odt-table" style="border-collapse: collapse; width: 100%; margin-bottom: 1em;"><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div markdown="block">
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>Tapez un nombre entier &gt;0: 4,0000000000000000000000001
 <a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>
-<a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a>Grazie per il numero intero &gt;0: 4.0000000000000000000000001
+<a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a>Merci pour le nombre entier &gt;0 : 4,0000000000000000000000001
 </code></pre></div>
 </div></td></tr></table>
 
-<p>I numeri reali non sono rappresentati in modo esatto, ma approssimativo. E in questo caso, l&#x27;operazione <em>numero - int(numero)</em> ha restituito 0 con la precisione del computer.</p>
-<p><a id="refheading1877732734444"></a>
-<a id="toc535044812"></a></p>
-<h2 id="42-espressioni-regolari">4.2. <span style="color: #4f81bd">Espressioni regolari</span></h2>
-<p>Le espressioni regolari ci permettono di verificare il formato di una stringa. In questo modo, possiamo verificare che una stringa che rappresenta una data sia nel formato gg/mm/aa. Per farlo, usiamo un modello e confrontiamo la stringa con quel modello. Quindi, in questo esempio, g, m e a devono essere cifre. Il modello per un formato di data valido è quindi <strong>&quot;\d\d/\d\d/\d\d&quot;,</strong> dove il simbolo <strong>\d</strong> indica una cifra. I simboli che possono essere utilizzati in un modello sono i seguenti (documentazione Microsoft):</p>
-<table class="odt-table" style="border-collapse: collapse; width: 100%; margin-bottom: 1em;"><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top;"><div style="margin:0 0 0.5em 0"><b>Carattere</b></div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top;"><div style="margin:0 0 0.5em 0"><b>Descrizione</b></div></td></tr><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top;"><div style="margin:0 0 0.5em 0"><b>\</b></div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top;"><div style="margin:0 0 0.5em 0">Indica che il carattere seguente è un carattere speciale o letterale. Ad esempio, &quot;n&quot; corrisponde al carattere &quot;n&quot;. &quot;\n&quot; corrisponde a un carattere di nuova riga. La sequenza &quot;\\&quot; corrisponde a &quot;\&quot;, mentre &quot;\(&quot; corrisponde a &quot;(&quot;.</div></td></tr><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top;"><div style="margin:0 0 0.5em 0"><b>^</b></div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top;"><div style="margin:0 0 0.5em 0">Corrisponde all&#x27;inizio dell&#x27;input.</div></td></tr><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top;"><div style="margin:0 0 0.5em 0"><b>$</b></div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top;"><div style="margin:0 0 0.5em 0">Corrisponde alla fine dell&#x27;input.</div></td></tr><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top;"><div style="margin:0 0 0.5em 0"><b>*</b></div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top;"><div style="margin:0 0 0.5em 0">Corrisponde al carattere precedente zero o più volte. Pertanto, &quot;zo*&quot; corrisponde a &quot;z&quot; o &quot;zoo&quot;.</div></td></tr><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top;"><div style="margin:0 0 0.5em 0"><b>+</b></div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top;"><div style="margin:0 0 0.5em 0">Corrisponde al carattere precedente una o più volte. Pertanto, &quot;zo+&quot; corrisponde a &quot;zoo&quot;, ma non a &quot;z&quot;.</div></td></tr><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top;"><div style="margin:0 0 0.5em 0"><b>?</b></div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top;"><div style="margin:0 0 0.5em 0">Corrisponde al carattere precedente zero o una volta. Ad esempio, &quot;a?ve?&quot; corrisponde a &quot;ve&quot; in &quot;lever&quot;.</div></td></tr><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top;"><div style="margin:0 0 0.5em 0"><b>.</b></div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top;"><div style="margin:0 0 0.5em 0">Corrisponde a qualsiasi singolo carattere, eccetto il carattere di nuova riga.</div></td></tr><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top;"><div style="margin:0 0 0.5em 0"><b>(pattern)</b></div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top;"><div style="margin:0 0 0.5em 0">Cerca il <i>pattern </i>e memorizza la corrispondenza. La sottostringa corrispondente può essere recuperata dalla collezione <b>Matches</b> risultante utilizzando Item <b>[0]...[n]</b>. Per trovare corrispondenze con caratteri all&#x27;interno di parentesi ( ), utilizzare &quot;\(&quot; o &quot;\)&quot;.</div></td></tr><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top;"><div style="margin:0 0 0.5em 0"><b>x|y</b></div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top;"><div style="margin:0 0 0.5em 0">Corrisponde a <i>x </i>o <i>y</i>. Ad esempio, &quot;z|foot&quot; corrisponde a &quot;z&quot; o &quot;foot&quot;. &quot;(z|f)oo&quot; corrisponde a &quot;zoo&quot; o &quot;foo&quot;.</div></td></tr><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top;"><div style="margin:0 0 0.5em 0"><b>{</b><i><b>n</b></i><b>}</b></div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top;"><div style="margin:0 0 0.5em 0"><i>n </i>è un numero intero non negativo. Trova esattamente <i>n </i>occorrenze del carattere. Ad esempio, &quot;o{2}&quot; non trova &quot;o&quot; in &quot;Bob&quot;, ma trova le prime due &quot;o&quot; in &quot;fooooot&quot;.</div></td></tr><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top;"><div style="margin:0 0 0.5em 0"><b>{</b><i><b>n</b></i><b>,}</b></div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top;"><div style="margin:0 0 0.5em 0"><i>n </i>è un numero intero non negativo. Trova almeno <i>n </i>occorrenze del carattere. Ad esempio, &quot;o{2,}&quot; non trova la &quot;o&quot; in &quot;Bob&quot;, ma trova tutte le &quot;o&quot; in &quot;fooooot&quot;. &quot;o{1,}&quot; equivale a &quot;o+&quot; e &quot;o{0,}&quot; equivale a &quot;o*&quot;.</div></td></tr><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top;"><div style="margin:0 0 0.5em 0"><b>{</b><i><b>n</b></i><b>,</b><i><b>m</b></i><b>}</b></div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top;"><div style="margin:0 0 0.5em 0"><i>m </i>e <i>n </i>sono numeri interi non negativi. Trova almeno <i>n </i>e al massimo <i>m </i>occorrenze del carattere. Ad esempio, &quot;o{1,3}&quot; trova le prime tre &quot;o&quot; in &quot;foooooot&quot;, mentre &quot;o{0,1}&quot; trova &quot;o?&quot;.</div></td></tr><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top;"><div style="margin:0 0 0.5em 0"><b>[</b><i><b>xyz</b></i><b>]</b></div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top;"><div style="margin:0 0 0.5em 0">Insieme di caratteri. Trova uno qualsiasi dei caratteri specificati. Ad esempio, &quot;[abc]&quot; trova &quot;a&quot; in &quot;plat&quot;.</div></td></tr><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top;"><div style="margin:0 0 0.5em 0"><b>[</b><i><b>^xyz</b></i><b>]</b></div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top;"><div style="margin:0 0 0.5em 0">Insieme di caratteri negativo. Trova qualsiasi carattere non elencato. Ad esempio, &quot;[^abc]&quot; trova la &quot;p&quot; in &quot;plat&quot;.</div></td></tr><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top;"><div style="margin:0 0 0.5em 0"><b>[</b><i><b>a-z</b></i><b>]</b></div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top;"><div style="margin:0 0 0.5em 0">Intervallo di caratteri. Corrisponde a qualsiasi carattere compreso nell&#x27;intervallo specificato. Ad esempio, &quot;[a-z]&quot; corrisponde a qualsiasi carattere alfabetico minuscolo compreso tra &quot;a&quot; e &quot;z&quot;.</div></td></tr><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top;"><div style="margin:0 0 0.5em 0"><b>[</b><i><b>^m-z</b></i><b>]</b></div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top;"><div style="margin:0 0 0.5em 0">Intervallo di caratteri negativo. Trova qualsiasi carattere non compreso nell&#x27;intervallo specificato. Ad esempio, &quot;[^m-z]&quot; trova qualsiasi carattere non compreso tra &quot;m&quot; e &quot;z&quot;.</div></td></tr><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top;"><div style="margin:0 0 0.5em 0"><b>\b</b></div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top;"><div style="margin:0 0 0.5em 0">Corrisponde a un confine di parola, ovvero alla posizione tra una parola e uno spazio. Ad esempio, &quot;er\b&quot; corrisponde a &quot;er&quot; in &quot;lever&quot;, ma non a &quot;er&quot; in &quot;verb&quot;.</div></td></tr><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top;"><div style="margin:0 0 0.5em 0"><b>\B</b></div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top;"><div style="margin:0 0 0.5em 0">Corrisponde a un confine che non rappresenta una parola. &quot;en*t\B&quot; corrisponde a &quot;ent&quot; in &quot;bien entendu&quot;.</div></td></tr><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top;"><div style="margin:0 0 0.5em 0"><b>\d</b></div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top;"><div style="margin:0 0 0.5em 0">Corrisponde a un carattere che rappresenta una cifra. Equivalente a [0-9].</div></td></tr><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top;"><div style="margin:0 0 0.5em 0"><b>\D</b></div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top;"><div style="margin:0 0 0.5em 0">Corrisponde a un carattere che non è una cifra. Equivalente a [^0-9].</div></td></tr><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top;"><div style="margin:0 0 0.5em 0"><b>\f</b></div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top;"><div style="margin:0 0 0.5em 0">Corrisponde a un carattere di interruzione di riga.</div></td></tr><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top;"><div style="margin:0 0 0.5em 0"><b>\n</b></div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top;"><div style="margin:0 0 0.5em 0">Corrisponde a un carattere di nuova riga.</div></td></tr><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top;"><div style="margin:0 0 0.5em 0"><b>\r</b></div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top;"><div style="margin:0 0 0.5em 0">Equivalente al carattere di ritorno a capo.</div></td></tr><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top;"><div style="margin:0 0 0.5em 0"><b>\s</b></div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top;"><div style="margin:0 0 0.5em 0">Corrisponde a qualsiasi carattere di spaziatura, inclusi spazio, tabulazione, interruzione di pagina, ecc. Equivalente a &quot;[ \f\n\r\t\v]&quot;.</div></td></tr><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top;"><div style="margin:0 0 0.5em 0"><b>\S</b></div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top;"><div style="margin:0 0 0.5em 0">Corrisponde a qualsiasi carattere non spazio. Equivalente a &quot;[^ \f\n\r\t\v]&quot;.</div></td></tr><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top;"><div style="margin:0 0 0.5em 0"><b>\t</b></div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top;"><div style="margin:0 0 0.5em 0">Corrisponde a un carattere di tabulazione.</div></td></tr><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top;"><div style="margin:0 0 0.5em 0"><b>\v</b></div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top;"><div style="margin:0 0 0.5em 0">Corrisponde a un carattere di tabulazione verticale.</div></td></tr><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top;"><div style="margin:0 0 0.5em 0"><b>\w</b></div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top;"><div style="margin:0 0 0.5em 0">Corrisponde a qualsiasi carattere che rappresenta una parola, compreso il trattino basso. Equivalente a &quot;[A-Za-z0-9_]&quot;.</div></td></tr><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top;"><div style="margin:0 0 0.5em 0"><b>\W</b></div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top;"><div style="margin:0 0 0.5em 0">Corrisponde a qualsiasi carattere che non rappresenti una parola. Equivalente a &quot;[^A-Za-z0-9_]&quot;.</div></td></tr><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top;"><div style="margin:0 0 0.5em 0"><b>\num</b></div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top;"><div style="margin:0 0 0.5em 0">Corrisponde a <i>num</i>, dove <i>num </i>è un numero intero positivo. Si riferisce alle corrispondenze memorizzate. Ad esempio, &quot;(.)\1&quot; corrisponde a due caratteri identici consecutivi.</div></td></tr><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top;"><div style="margin:0 0 0.5em 0"><b>\</b><i><b>n</b></i></div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top;"><div style="margin:0 0 0.5em 0">Corrisponde a <i>n</i>, dove <i>n </i>è un valore di escape ottale. I valori di escape ottali devono essere composti da 1, 2 o 3 cifre. Ad esempio, &quot;\11&quot; e &quot;\011&quot; corrispondono entrambi a un carattere di tabulazione. &quot;\0011&quot; è equivalente a &quot;\001&quot; e &quot;1&quot;. I valori di escape ottali non devono superare 256. In caso contrario, nell&#x27;espressione vengono prese in considerazione solo le prime due cifre. Consente l&#x27;uso dei codici ASCII nelle espressioni regolari.</div></td></tr><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top;"><div style="margin:0 0 0.5em 0"><b>\</b><i><b>xn</b></i></div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top;"><div style="margin:0 0 0.5em 0">Corrisponde a <i>n</i>, dove <i>n </i>è un valore di escape esadecimale. I valori di escape esadecimali devono essere composti esattamente da due cifre. Ad esempio, &quot;\x41&quot; corrisponde a &quot;A&quot;. &quot;\x041&quot; è equivalente a &quot;\x04&quot; e &quot;1&quot;. Consente l&#x27;uso dei codici ASCII nelle espressioni regolari.</div></td></tr></table>
+<p>I numeri reali non sono rappresentati in modo esatto, ma approssimativo. E in questo caso, l’operazione <em>nombre-int(nombre)</em> ha restituito 0, con la precisione consentita dal computer.</p>
+<p><span id="refheading1877732734444" name="refheading1877732734444" class="odt-bookmark-anchor"></span>
+<span id="toc535044812" name="toc535044812" class="odt-bookmark-anchor"></span></p>
+<h2 id="42-le-espressioni-regolari">4.2. <span style="color: #4f81bd">Le espressioni regolari</span></h2>
+<p>Le espressioni regolari ci consentono di verificare il formato di una stringa di caratteri. In questo modo è possibile verificare che una stringa che rappresenta una data sia nel formato gg/mm/aa. A tal fine si utilizza un modello e si confronta la stringa con tale modello. Pertanto, in questo esempio, g, m e a devono essere cifre. Il modello di un formato di data valido è quindi <strong>&quot;\d\d/\d\d/\d\d&quot;,</strong> dove il simbolo <strong>\d</strong> indica una cifra. I simboli utilizzabili in un modello sono i seguenti (documentazione Microsoft):</p>
+<table class="odt-table" style="border-collapse: collapse; width: 100%; margin-bottom: 1em;"><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0"><b>Carattere</b></div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0"><b>Descrizione</b></div></td></tr><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0"><b>\</b></div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0">Indica il carattere successivo come carattere speciale o letterale. Ad esempio, &quot;n&quot; corrisponde al carattere &quot;n&quot;. &quot;\n&quot; corrisponde a un carattere di nuova riga. La sequenza &quot;\\&quot; corrisponde a &quot;\&quot;, mentre &quot;\(&quot; corrisponde a &quot;(&quot;.</div></td></tr><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0"><b>^</b></div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0">Corrisponde all&#x27;inizio dell&#x27;input.</div></td></tr><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0"><b>$</b></div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0">Corrisponde alla fine dell&#x27;input.</div></td></tr><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0"><b>*</b></div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0">Corrisponde al carattere precedente zero o più volte. Pertanto, &quot;zo*&quot; corrisponde a &quot;z&quot; o a &quot;zoo&quot;.</div></td></tr><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0"><b>+</b></div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0">Corrisponde al carattere precedente una o più volte. Pertanto, &quot;zo+&quot; corrisponde a &quot;zoo&quot;, ma non a &quot;z&quot;.</div></td></tr><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0"><b>?</b></div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0">Corrisponde al carattere precedente zero o una volta. Ad esempio, &quot;a?ve?&quot; corrisponde a &quot;ve&quot; in &quot;lever&quot;.</div></td></tr><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0"><b>.</b></div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0">Corrisponde a qualsiasi singolo carattere, eccetto il carattere di nuova riga.</div></td></tr><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0"><b>(modello)</b></div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0">Cerca <i>modèle </i>e memorizza la corrispondenza. La sottostringa corrispondente può essere estratta dalla collezione <b>Matches </b>ottenuta, utilizzando Item <b>[0]...[n]</b>. Per trovare corrispondenze con caratteri tra parentesi ( ), utilizzare &quot;\(&quot; o &quot;\)&quot;.</div></td></tr><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0"><b>x|y</b></div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0">Corrisponde sia a <i>x </i>sia a <i>y</i>. Ad esempio, &quot;z|foot&quot; corrisponde a &quot;z&quot; o a &quot;foot&quot;. &quot;(z|f)oo&quot; corrisponde a &quot;zoo&quot; o a &quot;foo&quot;.</div></td></tr><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0"><b>{</b><i><b>n</b></i><b>}</b></div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0"><i>n </i>è un numero intero non negativo. Corrisponde esattamente a <i>n </i>moltiplicato per il carattere. Ad esempio, &quot;o{2}&quot; non corrisponde a &quot;o&quot; in &quot;Bob,&quot; ma alle prime due &quot;o&quot; in &quot;fooooot&quot;.</div></td></tr><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0"><b>{</b><i><b>n</b></i><b>,}</b></div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0"><i>n </i>è un numero intero non negativo. Corrisponde ad almeno <i>n </i>volte il carattere. Ad esempio, &quot;o{2,}&quot; non corrisponde alla &quot;o&quot; in &quot;Bob&quot;, ma a tutte le &quot;o&quot; in &quot;fooooot&quot;. &quot;o{1,}&quot; equivale a &quot;o+&quot; e &quot;o{0,}&quot; equivale a &quot;o*&quot;.</div></td></tr><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0"><b>{</b><i><b>n</b></i><b>,</b><i><b>m</b></i><b>}</b></div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0"><i>m </i>e <i>n </i>sono numeri interi non negativi. Corrisponde ad almeno <i>n </i>e al massimo <i>m </i>volte il carattere. Ad esempio, &quot;o{1,3}&quot; corrisponde alle prime tre &quot;o&quot; in &quot;foooooot&quot; e &quot;o{0,1}&quot; equivale a &quot;o?&quot;.</div></td></tr><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0"><b>[xyz]</b></div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0">Insieme di caratteri. Corrisponde a uno dei caratteri indicati. Ad esempio, &quot;[abc]&quot; corrisponde alla &quot;a&quot; in &quot;plat&quot;.</div></td></tr><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0"><b>[^xyz]</b></div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0">Set di caratteri negativo. Corrisponde a qualsiasi carattere non indicato. Ad esempio, &quot;[^abc]&quot; corrisponde alla &quot;p&quot; in &quot;plat&quot;.</div></td></tr><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0"><b>[a-z]</b></div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0">Intervallo di caratteri. Corrisponde a qualsiasi carattere compreso nella serie specificata. Ad esempio, &quot;[a-z]&quot; corrisponde a qualsiasi carattere alfabetico minuscolo compreso tra &quot;a&quot; e &quot;z&quot;.</div></td></tr><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0"><b>[^m-z]</b></div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0">Intervallo di caratteri negativo. Corrisponde a qualsiasi carattere non presente nella serie specificata. Ad esempio, &quot;[^m-z]&quot; corrisponde a qualsiasi carattere non compreso tra &quot;m&quot; e &quot;z&quot;.</div></td></tr><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0"><b>\b</b></div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0">Corrisponde a un delimitatore che rappresenta una parola, ovvero alla posizione tra una parola e uno spazio. Ad esempio, &quot;er\b&quot; corrisponde a &quot;er&quot; in &quot;lever&quot;, ma non a &quot;er&quot; in &quot;verbe&quot;.</div></td></tr><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0"><b>\B</b></div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0">Corrisponde a un limite che non rappresenta una parola. &quot;en*t\B&quot; corrisponde a &quot;ent&quot; in &quot;bien entendu&quot;.</div></td></tr><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0"><b>\d</b></div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0">Corrisponde a un carattere che rappresenta una cifra. Equivale a [0-9].</div></td></tr><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0"><b>\D</b></div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0">Corrisponde a un carattere che non rappresenta una cifra. Equivale a [^0-9].</div></td></tr><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0"><b>\f</b></div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0">Corrisponde a un carattere di fine pagina.</div></td></tr><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0"><b>\n</b></div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0">Corrisponde a un carattere di nuova riga.</div></td></tr><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0"><b>\r</b></div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0">Corrisponde a un carattere di ritorno a capo.</div></td></tr><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0"><b>\s</b></div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0">Corrisponde a qualsiasi carattere di spaziatura, inclusi spazio, tabulazione, salto di pagina, ecc. Equivale a &quot;[ \f\n\r\t\v]&quot;.</div></td></tr><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0"><b>\S</b></div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0">Corrisponde a qualsiasi carattere non bianco. Equivale a &quot;[^ \f\n\r\t\v]&quot;.</div></td></tr><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0"><b>\t</b></div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0">Corrisponde a un carattere di tabulazione.</div></td></tr><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0"><b>\v</b></div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0">Corrisponde a un carattere di tabulazione verticale.</div></td></tr><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0"><b>\w</b></div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0">Corrisponde a qualsiasi carattere che rappresenti una parola e includa un trattino basso. Equivale a &quot;[A-Za-z0-9_]&quot;.</div></td></tr><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0"><b>\W</b></div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0">Corrisponde a qualsiasi carattere che non rappresenti una parola. Equivale a &quot;[^A-Za-z0-9_]&quot;.</div></td></tr><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0"><b>\num</b></div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0">Corrisponde a <i>num</i>, dove <i>num </i>è un numero intero positivo. Fa riferimento alle corrispondenze memorizzate. Ad esempio, &quot;(.)\1&quot; corrisponde a due caratteri identici consecutivi.</div></td></tr><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0"><b>\</b><i><b>n</b></i></div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0">Corrisponde a <i>n</i>, dove <i>n </i>è un valore di escape ottale. I valori di escape ottali devono comprendere 1, 2 o 3 cifre. Ad esempio, sia &quot;\11&quot; che &quot;\011&quot; corrispondono a un carattere di tabulazione. &quot;\0011&quot; equivale a &quot;\001&quot; e &quot;1&quot;. I valori di escape ottali non devono superare 256. In caso contrario, nell&#x27;espressione verrebbero prese in considerazione solo le prime due cifre. Consente di utilizzare i codici ASCII nelle espressioni regolari.</div></td></tr><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0"><b>\</b><i><b>xn</b></i></div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0">Corrisponde a <i>n</i>, dove <i>n </i>è un valore di escape esadecimale. I valori di escape esadecimali devono obbligatoriamente comprendere due cifre. Ad esempio, &quot;\x41&quot; corrisponde a &quot;A&quot;. &quot;\x041&quot; equivale a &quot;\x04&quot; e &quot;1&quot;. Consente di utilizzare i codici ASCII nelle espressioni regolari.</div></td></tr></table>
 
-<p>Un elemento in un pattern può apparire una o più volte. Vediamo alcuni esempi che coinvolgono il simbolo <strong>\d</strong>, che rappresenta una singola cifra:</p>
-<table class="odt-table" style="border-collapse: collapse; width: 100%; margin-bottom: 1em;"><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top;"><div style="margin:0 0 0.5em 0"><b>modello</b></div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top;"><div style="margin:0 0 0.5em 0"><b>significato</b></div></td></tr><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top;"><div style="margin:0 0 0.5em 0"><b>\d</b></div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top;"><div style="margin:0 0 0.5em 0">una cifra</div></td></tr><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top;"><div style="margin:0 0 0.5em 0"><b>\d?</b></div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top;"><div style="margin:0 0 0.5em 0">0 o 1 cifra</div></td></tr><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top;"><div style="margin:0 0 0.5em 0"><b>\d*</b></div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top;"><div style="margin:0 0 0.5em 0">0 o più cifre</div></td></tr><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top;"><div style="margin:0 0 0.5em 0"><b>\d+</b></div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top;"><div style="margin:0 0 0.5em 0">1 o più cifre</div></td></tr><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top;"><div style="margin:0 0 0.5em 0"><b>\d{2}</b></div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top;"><div style="margin:0 0 0.5em 0">2 cifre</div></td></tr><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top;"><div style="margin:0 0 0.5em 0"><b>\d{3,}</b></div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top;"><div style="margin:0 0 0.5em 0">almeno 3 cifre</div></td></tr><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top;"><div style="margin:0 0 0.5em 0"><b>\d{5,7}</b></div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top;"><div style="margin:0 0 0.5em 0">da 5 a 7 cifre</div></td></tr></table>
+<p>Un elemento in un modello può essere presente una o più volte. Consideriamo alcuni esempi relativi al simbolo <strong>\d,</strong> che rappresenta una cifra:</p>
+<table class="odt-table" style="border-collapse: collapse; width: 100%; margin-bottom: 1em;"><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0"><b>modello</b></div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0"><b>significato</b></div></td></tr><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0"><b>\d</b></div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0">una cifra</div></td></tr><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0"><b>\d?</b></div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0">0 o 1 cifra</div></td></tr><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0"><b>\d*</b></div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0">0 o più cifre</div></td></tr><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0"><b>\d+</b></div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0">1 o più cifre</div></td></tr><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0"><b>\d{2}</b></div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0">2 cifre</div></td></tr><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0"><b>\d{3,}</b></div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0">almeno 3 cifre</div></td></tr><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0"><b>\d{5,7}</b></div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0">da 5 a 7 cifre</div></td></tr></table>
 
-<p>Immaginiamo ora un modello in grado di descrivere il formato previsto per una stringa:</p>
-<table class="odt-table" style="border-collapse: collapse; width: 100%; margin-bottom: 1em;"><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top;"><div style="margin:0 0 0.5em 0"><b>stringa di destinazione</b></div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top;"><div style="margin:0 0 0.5em 0"><b>modello</b></div></td></tr><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top;"><div style="margin:0 0 0.5em 0">una data nel formato gg/mm/aa</div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top;"><div style="margin:0 0 0.5em 0">\d{2}/\d{2}/\d{2}</div></td></tr><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top;"><div style="margin:0 0 0.5em 0">un&#x27;ora nel formato hh:mm:ss</div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top;"><div style="margin:0 0 0.5em 0">\d{2}:\d{2}:\d{2}</div></td></tr><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top;"><div style="margin:0 0 0.5em 0">un numero intero senza segno</div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top;"><div style="margin:0 0 0.5em 0">\d+</div></td></tr><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top;"><div style="margin:0 0 0.5em 0">una sequenza di spazi, che può essere vuota</div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top;"><div style="margin:0 0 0.5em 0">\s*</div></td></tr><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top;"><div style="margin:0 0 0.5em 0">un numero intero senza segno che può essere preceduto o seguito da spazi</div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top;"><div style="margin:0 0 0.5em 0">\s*\d+\s*</div></td></tr><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top;"><div style="margin:0 0 0.5em 0">un numero intero che può essere con segno e preceduto o seguito da spazi</div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top;"><div style="margin:0 0 0.5em 0">\s*[+|-]?\s*\d+\s*</div></td></tr><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top;"><div style="margin:0 0 0.5em 0">un numero reale senza segno che può essere preceduto o seguito da spazi</div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top;"><div style="margin:0 0 0.5em 0">\s*\d+(.\d*)?\s*</div></td></tr><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top;"><div style="margin:0 0 0.5em 0">un numero reale che può essere con segno e preceduto o seguito da spazi</div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top;"><div style="margin:0 0 0.5em 0">\s*[+|]?\s*\d+(.\d*)?\s*</div></td></tr><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top;"><div style="margin:0 0 0.5em 0">una stringa contenente la parola &quot;just&quot;</div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top;"><div style="margin:0 0 0.5em 0">\bjuste\b</div></td></tr><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top;">&nbsp;</td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top;">&nbsp;</td></tr></table>
+<p>Immaginiamo ora il modello in grado di descrivere il formato previsto per una stringa di caratteri:</p>
+<table class="odt-table" style="border-collapse: collapse; width: 100%; margin-bottom: 1em;"><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0"><b>stringa ricercata</b></div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0"><b>modello</b></div></td></tr><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0">una data nel formato gg/mm/aa</div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0">\d{2}/\d{2}/\d{2}</div></td></tr><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0">un&#x27;ora nel formato hh:mm:ss</div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0">\d{2}:\d{2}:\d{2}</div></td></tr><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0">un numero intero senza segno</div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0">\d+</div></td></tr><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0">una sequenza di spazi, eventualmente vuota</div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0">\s*</div></td></tr><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0">un numero intero senza segno che può essere preceduto o seguito da spazi</div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0">\s*\d+\s*</div></td></tr><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0">un numero intero che può essere con segno e preceduto o seguito da spazi</div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0">\s*[+|-]?\s*\d+\s*</div></td></tr><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0">un numero reale senza segno che può essere preceduto o seguito da spazi</div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0">\s*\d+(.\d*)?\s*</div></td></tr><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0">un numero reale che può essere con segno e preceduto o seguito da spazi</div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0">\s*[+|]?\s*\d+(.\d*)?\s*</div></td></tr><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0">una stringa contenente la parola &quot;giusto&quot;</div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0">\bjusto\b</div></td></tr><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;">&nbsp;</td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;">&nbsp;</td></tr></table>
 
-<p>È possibile specificare dove cercare il pattern nella stringa:</p>
-<table class="odt-table" style="border-collapse: collapse; width: 100%; margin-bottom: 1em;"><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top;"><div style="margin:0 0 0.5em 0"><b>sequenza</b></div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top;"><div style="margin:0 0 0.5em 0"><b>significato</b></div></td></tr><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top;"><div style="margin:0 0 0.5em 0"><b>^motivo</b></div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top;"><div style="margin:0 0 0.5em 0">il pattern inizia la stringa</div></td></tr><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top;"><div style="margin:0 0 0.5em 0"><b>pattern$</b></div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top;"><div style="margin:0 0 0.5em 0">il pattern termina la stringa</div></td></tr><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top;"><div style="margin:0 0 0.5em 0"><b>^pattern$</b></div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top;"><div style="margin:0 0 0.5em 0">il pattern inizia e termina la stringa</div></td></tr><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top;"><div style="margin:0 0 0.5em 0"><b>pattern</b></div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top;"><div style="margin:0 0 0.5em 0">il pattern viene cercato in qualsiasi punto della stringa, a partire dall&#x27;inizio.</div></td></tr></table>
+<p>È possibile specificare dove cercare il modello nella stringa:</p>
+<table class="odt-table" style="border-collapse: collapse; width: 100%; margin-bottom: 1em;"><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0"><b>modello</b></div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0"><b>significato</b></div></td></tr><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0"><b>^modello</b></div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0">il modello inizia la stringa</div></td></tr><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0"><b>modello$</b></div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0">il modello conclude la stringa</div></td></tr><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0"><b>^modello$</b></div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0">il modello inizia e termina la stringa</div></td></tr><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0"><b>modello</b></div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0">il modello viene cercato in tutta la stringa a partire dall&#x27;inizio della stessa.</div></td></tr></table>
 
-<table class="odt-table" style="border-collapse: collapse; width: 100%; margin-bottom: 1em;"><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top;"><div style="margin:0 0 0.5em 0"><b>stringa di ricerca</b></div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top;"><div style="margin:0 0 0.5em 0"><b>modello</b></div></td></tr><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top;"><div style="margin:0 0 0.5em 0">una stringa che termina con un punto esclamativo</div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top;"><div style="margin:0 0 0.5em 0">!$</div></td></tr><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top;"><div style="margin:0 0 0.5em 0">una stringa che termina con un punto</div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top;"><div style="margin:0 0 0.5em 0">\.$</div></td></tr><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top;"><div style="margin:0 0 0.5em 0">una stringa che inizia con la sequenza //</div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top;"><div style="margin:0 0 0.5em 0">^//</div></td></tr><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top;"><div style="margin:0 0 0.5em 0">una stringa costituita da una singola parola, facoltativamente preceduta o seguita da spazi</div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top;"><div style="margin:0 0 0.5em 0">^\s*\w+\s*$</div></td></tr><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top;"><div style="margin:0 0 0.5em 0">una stringa composta da due parole, facoltativamente seguita o preceduta da spazi</div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top;"><div style="margin:0 0 0.5em 0">^\s*\w+\s*\w+\s*$</div></td></tr><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top;"><div style="margin:0 0 0.5em 0">una stringa contenente la parola secret</div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top;"><div style="margin:0 0 0.5em 0">\bsecret\b</div></td></tr></table>
+<table class="odt-table" style="border-collapse: collapse; width: 100%; margin-bottom: 1em;"><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0"><b>stringa cercata</b></div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0"><b>modello</b></div></td></tr><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0">una stringa che termina con un punto esclamativo</div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0">!$</div></td></tr><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0">una stringa che termina con un punto</div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0">\.$</div></td></tr><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0">una stringa che inizia con la sequenza //</div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0">^//</div></td></tr><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0">una stringa composta da una sola parola, eventualmente preceduta o seguita da spazi</div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0">^\s*\w+\s*$</div></td></tr><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0">una stringa contenente due parole, eventualmente precedute o seguite da spazi</div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0">^\s*\w+\s*\w+\s*$</div></td></tr><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0">una stringa contenente la parola &quot;secret&quot;</div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0">\bsecret\b</div></td></tr></table>
 
-<p>I sottopattern di un pattern possono essere &quot;estratti&quot;. Pertanto, non solo possiamo verificare che una stringa corrisponda a un particolare pattern, ma possiamo anche estrarre da quella stringa gli elementi corrispondenti ai sottopattern del pattern che sono stati racchiusi tra parentesi. Ad esempio, se stiamo analizzando una stringa contenente una data nel formato dd/mm/yy e vogliamo estrarre le componenti dd, mm e yy di quella data, useremmo il modello (\d\d)/(\d\d)/(\d\d).</p>
-<p>Diamo un&#x27;occhiata a questo esempio per vedere come farlo con VBScript.</p>
+<p>I sottoinsiemi di un modello possono essere &quot;recuperati&quot;. In questo modo, non solo è possibile verificare che una stringa corrisponda a un modello specifico, ma è anche possibile recuperare all&#x27;interno di tale stringa gli elementi corrispondenti ai sottoinsiemi del modello racchiusi tra parentesi. Pertanto, se si analizza una stringa contenente una data gg/mm/aa e si desidera inoltre estrarre gli elementi gg, mm, aa di tale data, si utilizzerà il modello (\d\d)/(\d\d)/(\d\d).</p>
+<p>Vediamo, con questo esempio, come si procede con VBScript.</p>
 <ul>
-  <li>Per prima cosa, dobbiamo creare un oggetto <b>RegExp </b>(Espressione Regolare)
+  <li>Per prima cosa dobbiamo creare un oggetto <b>RegExp </b>(Espressione regolare)
   </li>
 </ul>
 
 <div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>set modele=new regexp
 </code></pre></div>
 <ul>
-  <li>Quindi impostiamo il pattern da testare
+  <li>poi si imposta il modello da testare
   </li>
 </ul>
 
 <div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>modele.pattern=&quot;(\d\d)/(\d\d)/(\d\d)&quot;
 </code></pre></div>
 <ul>
-  <li>Potresti voler ignorare le maiuscole e le minuscole (per impostazione predefinita, si distingue tra maiuscole e minuscole). In questo caso, non ha importanza.
+  <li>Si potrebbe voler ignorare la distinzione tra maiuscole e minuscole (per impostazione predefinita è attiva). In questo caso non ha alcuna importanza.
   </li>
 </ul>
 
 <div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>modele.IgnoreCase=true
 </code></pre></div>
 <ul>
-  <li>Potresti voler cercare il pattern più volte nella stringa (per impostazione predefinita, ciò non avviene)
+  <li>si può voler cercare il modello più volte nella stringa (per impostazione predefinita non viene fatto)
   </li>
 </ul>
 
 <div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>modele.Global=true
 </code></pre></div>
-<p>Una ricerca globale ha senso solo se il modello utilizzato non si riferisce all&#x27;inizio o alla fine della stringa.</p>
+<p>Una ricerca globale ha senso solo se il modello utilizzato non fa riferimento all&#x27;inizio o alla fine della stringa.</p>
 <ul>
-  <li>Cerchiamo quindi tutte le corrispondenze del modello nella stringa:
+  <li>Si cercano quindi tutte le corrispondenze del modello nella stringa:
   </li>
 </ul>
 
 <div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a>set correspondances=modele.execute(chaine)
 </code></pre></div>
-<p>Il metodo <em><code>execute</code></em> di un oggetto <em>RegExp</em> restituisce una raccolta di oggetti <strong><code>match**</code>. Questi oggetti dispongono di una proprietà </strong><code>value</code><em><em> che contiene la stringa corrispondente al pattern. Se è stato impostato </em><code>pattern.global=true*</code>, potrebbero esserci più corrispondenze. Ecco perché il risultato del metodo </em><code>execute*</code> è una raccolta di oggetti <code>match</code>.</p>
+<p>Il metodo <em>execute</em> di un oggetto <em>RegExp</em> restituisce una collezione di oggetti di tipo <strong>match</strong>. Questo oggetto ha una proprietà <strong>value</strong> che è l&#x27;elemento di <em>chaine</em> corrispondente al modello. Se si è scritto <em>modele.global=true</em>, si possono avere più corrispondenze. Ecco perché il risultato del metodo <em>execute</em> è una collezione di corrispondenze.</p>
 <ul>
-  <li>Il numero di corrispondenze è dato da <b>matches.count</b>. Se questo numero è 0, significa che il pattern non è stato trovato da nessuna parte. Il valore della corrispondenza #i è dato da <i>matches(i).value</i>. Se il pattern contiene sottopattern tra parentesi, l&#x27;elemento di <i>matches(i) </i>corrispondente alla parentesi j nel pattern è <b>matches(i).submatches(j)</b>.
+  <li>Il numero di corrispondenze è dato da <b>correspondances.count</b>. Se tale numero è pari a 0, significa che il modello non è stato trovato da nessuna parte. Il valore della corrispondenza n. i è dato da <i>correspondances(i).value</i>. Se il modello contiene sottomodelli tra parentesi, allora l&#x27;elemento di <i>correspondances(i) </i>corrispondente alla parentesi j del modello è <b>correspondances(i).submatches(j)</b>.
   </li>
 </ul>
 
 <p>Tutto ciò è illustrato nell&#x27;esempio seguente:</p>
-<p><strong>Programma</strong></p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="c1">&#39; regular expression</span>
+<table class="odt-table" style="border-collapse: collapse; width: 100%; margin-bottom: 1em;"><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0"><b>Programma</b></div></td></tr><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div markdown="block">
+<div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="c1">&#39; espressione regolare</span>
 <a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a>
-<a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a><span class="c1">&#39; we want to check that a string contains a date in dd/mm/yy format</span>
+<a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a><span class="c1">&#39; si vuole verificare che una stringa contenga una data nel formato gg/mm/aa</span>
 <a id="__codelineno-11-4" name="__codelineno-11-4" href="#__codelineno-11-4"></a>
 <a id="__codelineno-11-5" name="__codelineno-11-5" href="#__codelineno-11-5"></a><span class="k">Option</span><span class="w"> </span><span class="k">Explicit</span>
 <a id="__codelineno-11-6" name="__codelineno-11-6" href="#__codelineno-11-6"></a><span class="kd">Dim</span><span class="w"> </span><span class="nv">modele</span>
 <a id="__codelineno-11-7" name="__codelineno-11-7" href="#__codelineno-11-7"></a>
-<a id="__codelineno-11-8" name="__codelineno-11-8" href="#__codelineno-11-8"></a><span class="c1">&#39; we define the</span>
+<a id="__codelineno-11-8" name="__codelineno-11-8" href="#__codelineno-11-8"></a><span class="c1">&#39; si definisce il modello</span>
 <a id="__codelineno-11-9" name="__codelineno-11-9" href="#__codelineno-11-9"></a><span class="k">Set</span><span class="w"> </span><span class="n">modele</span><span class="o">=</span><span class="k">new</span><span class="w"> </span><span class="nb">regexp</span>
-<a id="__codelineno-11-10" name="__codelineno-11-10" href="#__codelineno-11-10"></a><span class="n">modele</span><span class="p">.</span><span class="n">pattern</span><span class="o">=</span><span class="s2">&quot;\b(\d\d)/(\d\d)/(\d\d)\b&quot;</span><span class="w">  </span><span class="c1">&#39; a date anywhere in the chain</span>
-<a id="__codelineno-11-11" name="__codelineno-11-11" href="#__codelineno-11-11"></a><span class="n">modele</span><span class="p">.</span><span class="k">global</span><span class="o">=</span><span class="no">true</span><span class="w">                      </span><span class="c1">&#39; we will search for the model several times in the chain</span>
+<a id="__codelineno-11-10" name="__codelineno-11-10" href="#__codelineno-11-10"></a><span class="n">modele</span><span class="p">.</span><span class="n">pattern</span><span class="o">=</span><span class="s2">&quot;\b(\d\d)/(\d\d)/(\d\d)\b&quot;</span><span class="w">  </span><span class="c1">&#39; une date n&#39;importe où dans la chaîne</span>
+<a id="__codelineno-11-11" name="__codelineno-11-11" href="#__codelineno-11-11"></a><span class="n">modele</span><span class="p">.</span><span class="k">global</span><span class="o">=</span><span class="no">true</span><span class="w">                      </span><span class="c1">&#39; on recherchera le modèle plusieurs fois dans la chaîne</span>
 <a id="__codelineno-11-12" name="__codelineno-11-12" href="#__codelineno-11-12"></a>
-<a id="__codelineno-11-13" name="__codelineno-11-13" href="#__codelineno-11-13"></a><span class="c1">&#39; the user specifies the string in which to search for the model</span>
+<a id="__codelineno-11-13" name="__codelineno-11-13" href="#__codelineno-11-13"></a><span class="c1">&#39; è l&#39;utente a fornire la stringa in cui si cercherà il modello</span>
 <a id="__codelineno-11-14" name="__codelineno-11-14" href="#__codelineno-11-14"></a><span class="kd">Dim</span><span class="w"> </span><span class="nv">chaine</span><span class="p">,</span><span class="w"> </span><span class="nv">correspondances</span><span class="p">,</span><span class="w"> </span><span class="nv">i</span>
 <a id="__codelineno-11-15" name="__codelineno-11-15" href="#__codelineno-11-15"></a>
 <a id="__codelineno-11-16" name="__codelineno-11-16" href="#__codelineno-11-16"></a><span class="n">chaine</span><span class="o">=</span><span class="s2">&quot;&quot;</span>
-<a id="__codelineno-11-17" name="__codelineno-11-17" href="#__codelineno-11-17"></a><span class="c1">&#39; loop as long as string&lt;&gt;&quot;end&quot;</span>
+<a id="__codelineno-11-17" name="__codelineno-11-17" href="#__codelineno-11-17"></a><span class="c1">&#39; si esegue un ciclo finché stringa &lt;&gt; &quot;fine&quot;</span>
 <a id="__codelineno-11-18" name="__codelineno-11-18" href="#__codelineno-11-18"></a><span class="k">Do</span><span class="w"> </span><span class="k">While</span><span class="w"> </span><span class="no">true</span>
-<a id="__codelineno-11-19" name="__codelineno-11-19" href="#__codelineno-11-19"></a><span class="w">    </span><span class="c1">&#39; the user is asked to type a text</span>
+<a id="__codelineno-11-19" name="__codelineno-11-19" href="#__codelineno-11-19"></a><span class="w">    </span><span class="c1">&#39; si chiede all&#39;utente di digitare un testo</span>
 <a id="__codelineno-11-20" name="__codelineno-11-20" href="#__codelineno-11-20"></a><span class="w">    </span><span class="n">wscript</span><span class="p">.</span><span class="n">stdout</span><span class="p">.</span><span class="n">writeLine</span><span class="w"> </span><span class="s2">&quot;Tapez un texte contenant des dates au format jj/mm/aa et fin pour arrêter : &quot;</span>
 <a id="__codelineno-11-21" name="__codelineno-11-21" href="#__codelineno-11-21"></a><span class="w">    </span><span class="n">chaine</span><span class="o">=</span><span class="n">wscript</span><span class="p">.</span><span class="n">stdin</span><span class="p">.</span><span class="n">readLine</span>
-<a id="__codelineno-11-22" name="__codelineno-11-22" href="#__codelineno-11-22"></a><span class="w">    </span><span class="c1">&#39; fini si chaine=fin</span>
+<a id="__codelineno-11-22" name="__codelineno-11-22" href="#__codelineno-11-22"></a><span class="w">    </span><span class="c1">&#39; si termina se stringa = &quot;fine&quot;</span>
 <a id="__codelineno-11-23" name="__codelineno-11-23" href="#__codelineno-11-23"></a><span class="w">    </span><span class="k">If</span><span class="w"> </span><span class="n">chaine</span><span class="o">=</span><span class="s2">&quot;fin&quot;</span><span class="w"> </span><span class="k">Then</span><span class="w"> </span><span class="k">Exit</span><span class="w"> </span><span class="k">Do</span>
-<a id="__codelineno-11-24" name="__codelineno-11-24" href="#__codelineno-11-24"></a><span class="w">    </span><span class="c1">&#39; the string read is compared with the date template</span>
+<a id="__codelineno-11-24" name="__codelineno-11-24" href="#__codelineno-11-24"></a><span class="w">    </span><span class="c1">&#39; si confronta la stringa letta con il modello della data</span>
 <a id="__codelineno-11-25" name="__codelineno-11-25" href="#__codelineno-11-25"></a><span class="w">    </span><span class="k">Set</span><span class="w"> </span><span class="n">correspondances</span><span class="o">=</span><span class="n">modele</span><span class="p">.</span><span class="k">execute</span><span class="p">(</span><span class="n">chaine</span><span class="p">)</span>
-<a id="__codelineno-11-26" name="__codelineno-11-26" href="#__codelineno-11-26"></a><span class="w">    </span><span class="c1">&#39; was a match found</span>
+<a id="__codelineno-11-26" name="__codelineno-11-26" href="#__codelineno-11-26"></a><span class="w">    </span><span class="c1">&#39; è stata trovata una corrispondenza</span>
 <a id="__codelineno-11-27" name="__codelineno-11-27" href="#__codelineno-11-27"></a><span class="w">    </span><span class="k">If</span><span class="w"> </span><span class="n">correspondances</span><span class="p">.</span><span class="n">count</span><span class="o">&lt;&gt;</span><span class="mi">0</span><span class="w"> </span><span class="k">Then</span>
-<a id="__codelineno-11-28" name="__codelineno-11-28" href="#__codelineno-11-28"></a><span class="w">        </span><span class="c1">&#39; we have at least one match</span>
+<a id="__codelineno-11-28" name="__codelineno-11-28" href="#__codelineno-11-28"></a><span class="w">        </span><span class="c1">&#39; c&#39;è almeno una corrispondenza</span>
 <a id="__codelineno-11-29" name="__codelineno-11-29" href="#__codelineno-11-29"></a><span class="w">        </span><span class="k">For</span><span class="w"> </span><span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="w"> </span><span class="n">To</span><span class="w"> </span><span class="n">correspondances</span><span class="p">.</span><span class="n">count</span><span class="o">-</span><span class="mi">1</span>
-<a id="__codelineno-11-30" name="__codelineno-11-30" href="#__codelineno-11-30"></a><span class="w">            </span><span class="c1">&#39; the i correspondence is displayed</span>
+<a id="__codelineno-11-30" name="__codelineno-11-30" href="#__codelineno-11-30"></a><span class="w">            </span><span class="c1">&#39; si visualizza la corrispondenza i</span>
 <a id="__codelineno-11-31" name="__codelineno-11-31" href="#__codelineno-11-31"></a><span class="w">            </span><span class="n">wscript</span><span class="p">.</span><span class="n">echo</span><span class="w"> </span><span class="s2">&quot;J&#39;ai trouvé la date &quot;</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">correspondances</span><span class="p">(</span><span class="n">i</span><span class="p">).</span><span class="n">value</span>
-<a id="__codelineno-11-32" name="__codelineno-11-32" href="#__codelineno-11-32"></a><span class="w">            </span><span class="c1">&#39; we retrieve the sub-elements of correspondence i</span>
+<a id="__codelineno-11-32" name="__codelineno-11-32" href="#__codelineno-11-32"></a><span class="w">            </span><span class="c1">&#39; si recuperano i sottoelementi della corrispondenza i</span>
 <a id="__codelineno-11-33" name="__codelineno-11-33" href="#__codelineno-11-33"></a><span class="w">            </span><span class="n">wscript</span><span class="p">.</span><span class="n">echo</span><span class="w"> </span><span class="s2">&quot;Les éléments de la date &quot;</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="s2">&quot; sont (&quot;</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">correspondances</span><span class="p">(</span><span class="n">i</span><span class="p">).</span><span class="nb">submatches</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="s2">&quot;,&quot;</span><span class="w"> </span><span class="n">_</span>
 <a id="__codelineno-11-34" name="__codelineno-11-34" href="#__codelineno-11-34"></a><span class="w">            </span><span class="o">&amp;</span><span class="w"> </span><span class="n">correspondances</span><span class="p">(</span><span class="n">i</span><span class="p">).</span><span class="nb">submatches</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="s2">&quot;,&quot;</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">correspondances</span><span class="p">(</span><span class="n">i</span><span class="p">).</span><span class="nb">submatches</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="s2">&quot;)&quot;</span>
 <a id="__codelineno-11-35" name="__codelineno-11-35" href="#__codelineno-11-35"></a><span class="w">        </span><span class="k">Next</span>
 <a id="__codelineno-11-36" name="__codelineno-11-36" href="#__codelineno-11-36"></a><span class="w">    </span><span class="k">Else</span>
-<a id="__codelineno-11-37" name="__codelineno-11-37" href="#__codelineno-11-37"></a><span class="w">        </span><span class="c1">&#39; no correspondence</span>
+<a id="__codelineno-11-37" name="__codelineno-11-37" href="#__codelineno-11-37"></a><span class="w">        </span><span class="c1">&#39; nessuna corrispondenza</span>
 <a id="__codelineno-11-38" name="__codelineno-11-38" href="#__codelineno-11-38"></a><span class="w">        </span><span class="n">wscript</span><span class="p">.</span><span class="n">echo</span><span class="w"> </span><span class="s2">&quot;Je n&#39;ai pas trouvé de date au format jj/mm/aa dans votre texte&quot;</span>
 <a id="__codelineno-11-39" name="__codelineno-11-39" href="#__codelineno-11-39"></a><span class="w">    </span><span class="k">End</span><span class="w"> </span><span class="k">If</span>
 <a id="__codelineno-11-40" name="__codelineno-11-40" href="#__codelineno-11-40"></a><span class="k">Loop</span>
 <a id="__codelineno-11-41" name="__codelineno-11-41" href="#__codelineno-11-41"></a>
-<a id="__codelineno-11-42" name="__codelineno-11-42" href="#__codelineno-11-42"></a><span class="c1">&#39; finish</span>
+<a id="__codelineno-11-42" name="__codelineno-11-42" href="#__codelineno-11-42"></a><span class="c1">&#39; fine</span>
 <a id="__codelineno-11-43" name="__codelineno-11-43" href="#__codelineno-11-43"></a><span class="n">wscript</span><span class="p">.</span><span class="n">quit</span><span class="w"> </span><span class="mi">0</span>
 </code></pre></div>
-<p><strong>Risultati</strong></p>
+</div></td></tr><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0"><b>Risultati</b></div></td></tr><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div markdown="block">
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-12-1"> 1</a></span>
 <span class="normal"><a href="#__codelineno-12-2"> 2</a></span>
 <span class="normal"><a href="#__codelineno-12-3"> 3</a></span>
@@ -862,50 +870,52 @@
 <a id="__codelineno-12-21" name="__codelineno-12-21"></a>Tapez un texte contenant des dates au format jj/mm/aa et fin pour arrÛter :
 <a id="__codelineno-12-22" name="__codelineno-12-22"></a>fin
 </code></pre></div></td></tr></table></div>
-<p>Utilizzando le espressioni regolari, il programma che verifica se un input da tastiera è effettivamente un numero intero positivo potrebbe essere scritto come segue:</p>
-<p><strong>Programma</strong></p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a><span class="c1">&#39; read data until it is recognized as a number</span>
+</div></td></tr></table>
+
+<p>Con le espressioni regolari, il programma che verifica che un valore immesso dalla tastiera sia effettivamente un numero intero positivo potrebbe essere scritto come segue:</p>
+<table class="odt-table" style="border-collapse: collapse; width: 100%; margin-bottom: 1em;"><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0"><b>Programma</b></div></td></tr><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div markdown="block">
+<div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a><span class="c1">&#39; lettura di un dato fino a quando non viene riconosciuto come numero</span>
 <a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a>
 <a id="__codelineno-13-3" name="__codelineno-13-3" href="#__codelineno-13-3"></a><span class="k">Option</span><span class="w"> </span><span class="k">Explicit</span>
 <a id="__codelineno-13-4" name="__codelineno-13-4" href="#__codelineno-13-4"></a>
 <a id="__codelineno-13-5" name="__codelineno-13-5" href="#__codelineno-13-5"></a><span class="kd">Dim</span><span class="w"> </span><span class="nv">fini</span><span class="p">,</span><span class="w"> </span><span class="nv">nombre</span>
 <a id="__codelineno-13-6" name="__codelineno-13-6" href="#__codelineno-13-6"></a>
-<a id="__codelineno-13-7" name="__codelineno-13-7" href="#__codelineno-13-7"></a><span class="c1">&#39; we define the model of a positive integer (which may be zero)</span>
+<a id="__codelineno-13-7" name="__codelineno-13-7" href="#__codelineno-13-7"></a><span class="c1">&#39; si definisce il modello di un numero intero positivo (che però può essere zero)</span>
 <a id="__codelineno-13-8" name="__codelineno-13-8" href="#__codelineno-13-8"></a><span class="kd">Dim</span><span class="w"> </span><span class="nv">modele</span>
 <a id="__codelineno-13-9" name="__codelineno-13-9" href="#__codelineno-13-9"></a><span class="k">Set</span><span class="w"> </span><span class="n">modele</span><span class="o">=</span><span class="k">new</span><span class="w"> </span><span class="nb">regexp</span>
 <a id="__codelineno-13-10" name="__codelineno-13-10" href="#__codelineno-13-10"></a><span class="n">modele</span><span class="p">.</span><span class="n">pattern</span><span class="o">=</span><span class="s2">&quot;^\s*\d+\s*$&quot;</span>
 <a id="__codelineno-13-11" name="__codelineno-13-11" href="#__codelineno-13-11"></a>
-<a id="__codelineno-13-12" name="__codelineno-13-12" href="#__codelineno-13-12"></a><span class="c1">&#39; loop until the data entered is correct</span>
-<a id="__codelineno-13-13" name="__codelineno-13-13" href="#__codelineno-13-13"></a><span class="c1">&#39; the loop is controlled by a finite boolean, set to false at the start (= it&#39;s not finite)</span>
+<a id="__codelineno-13-12" name="__codelineno-13-12" href="#__codelineno-13-12"></a><span class="c1">&#39; si esegue un ciclo finché il dato inserito non è corretto</span>
+<a id="__codelineno-13-13" name="__codelineno-13-13" href="#__codelineno-13-13"></a><span class="c1">&#39; il ciclo è controllato da una variabile booleana iniziale impostata a falso (= non è terminato)</span>
 <a id="__codelineno-13-14" name="__codelineno-13-14" href="#__codelineno-13-14"></a>
 <a id="__codelineno-13-15" name="__codelineno-13-15" href="#__codelineno-13-15"></a><span class="n">fini</span><span class="o">=</span><span class="no">false</span>
 <a id="__codelineno-13-16" name="__codelineno-13-16" href="#__codelineno-13-16"></a><span class="k">Do</span><span class="w"> </span><span class="k">While</span><span class="w"> </span><span class="ow">Not</span><span class="w"> </span><span class="n">fini</span>
-<a id="__codelineno-13-17" name="__codelineno-13-17" href="#__codelineno-13-17"></a><span class="w">    </span><span class="c1">&#39; we ask for the number</span>
+<a id="__codelineno-13-17" name="__codelineno-13-17" href="#__codelineno-13-17"></a><span class="w">    </span><span class="c1">&#39; si richiede il numero</span>
 <a id="__codelineno-13-18" name="__codelineno-13-18" href="#__codelineno-13-18"></a><span class="w">    </span><span class="n">wscript</span><span class="p">.</span><span class="n">stdout</span><span class="p">.</span><span class="n">write</span><span class="w"> </span><span class="s2">&quot;Tapez un nombre entier &gt;0: &quot;</span>
-<a id="__codelineno-13-19" name="__codelineno-13-19" href="#__codelineno-13-19"></a><span class="w">    </span><span class="c1">&#39; we read it</span>
+<a id="__codelineno-13-19" name="__codelineno-13-19" href="#__codelineno-13-19"></a><span class="w">    </span><span class="c1">&#39; lo si legge</span>
 <a id="__codelineno-13-20" name="__codelineno-13-20" href="#__codelineno-13-20"></a><span class="w">    </span><span class="n">nombre</span><span class="o">=</span><span class="n">wscript</span><span class="p">.</span><span class="n">stdin</span><span class="p">.</span><span class="n">readLine</span>
-<a id="__codelineno-13-21" name="__codelineno-13-21" href="#__codelineno-13-21"></a><span class="w">    </span><span class="c1">&#39; test the format of the data read</span>
+<a id="__codelineno-13-21" name="__codelineno-13-21" href="#__codelineno-13-21"></a><span class="w">    </span><span class="c1">&#39; si verifica il formato del dato letto</span>
 <a id="__codelineno-13-22" name="__codelineno-13-22" href="#__codelineno-13-22"></a><span class="w">    </span><span class="kd">Dim</span><span class="w"> </span><span class="nv">correspondances</span>
 <a id="__codelineno-13-23" name="__codelineno-13-23" href="#__codelineno-13-23"></a><span class="w">    </span><span class="k">Set</span><span class="w"> </span><span class="n">correspondances</span><span class="o">=</span><span class="n">modele</span><span class="p">.</span><span class="k">execute</span><span class="p">(</span><span class="n">nombre</span><span class="p">)</span>
-<a id="__codelineno-13-24" name="__codelineno-13-24" href="#__codelineno-13-24"></a><span class="w">    </span><span class="c1">&#39; has the model been checked?</span>
+<a id="__codelineno-13-24" name="__codelineno-13-24" href="#__codelineno-13-24"></a><span class="w">    </span><span class="c1">&#39; Il modello è stato verificato?</span>
 <a id="__codelineno-13-25" name="__codelineno-13-25" href="#__codelineno-13-25"></a><span class="w">    </span><span class="k">If</span><span class="w"> </span><span class="n">correspondances</span><span class="p">.</span><span class="n">count</span><span class="o">&lt;&gt;</span><span class="mi">0</span><span class="w"> </span><span class="k">Then</span>
-<a id="__codelineno-13-26" name="__codelineno-13-26" href="#__codelineno-13-26"></a><span class="w">        </span><span class="c1">&#39; it&#39;s an integer, but is it &gt;0?</span>
+<a id="__codelineno-13-26" name="__codelineno-13-26" href="#__codelineno-13-26"></a><span class="w">        </span><span class="c1">&#39; è un numero intero, ma è &gt;0?</span>
 <a id="__codelineno-13-27" name="__codelineno-13-27" href="#__codelineno-13-27"></a><span class="w">        </span><span class="n">nombre</span><span class="o">=</span><span class="nb">cint</span><span class="p">(</span><span class="n">nombre</span><span class="p">)</span>
 <a id="__codelineno-13-28" name="__codelineno-13-28" href="#__codelineno-13-28"></a><span class="w">        </span><span class="k">If</span><span class="w"> </span><span class="n">nombre</span><span class="o">&gt;</span><span class="mi">0</span><span class="w"> </span><span class="k">Then</span>
 <a id="__codelineno-13-29" name="__codelineno-13-29" href="#__codelineno-13-29"></a><span class="w">            </span><span class="n">fini</span><span class="o">=</span><span class="no">true</span>
 <a id="__codelineno-13-30" name="__codelineno-13-30" href="#__codelineno-13-30"></a><span class="w">        </span><span class="k">End</span><span class="w"> </span><span class="k">If</span>
 <a id="__codelineno-13-31" name="__codelineno-13-31" href="#__codelineno-13-31"></a><span class="w">    </span><span class="k">End</span><span class="w"> </span><span class="k">If</span>
-<a id="__codelineno-13-32" name="__codelineno-13-32" href="#__codelineno-13-32"></a><span class="w">    </span><span class="c1">&#39; possible error msg</span>
+<a id="__codelineno-13-32" name="__codelineno-13-32" href="#__codelineno-13-32"></a><span class="w">    </span><span class="c1">&#39; eventuale messaggio di errore</span>
 <a id="__codelineno-13-33" name="__codelineno-13-33" href="#__codelineno-13-33"></a><span class="w">    </span><span class="k">If</span><span class="w"> </span><span class="ow">Not</span><span class="w"> </span><span class="n">fini</span><span class="w"> </span><span class="k">Then</span><span class="w"> </span><span class="n">wscript</span><span class="p">.</span><span class="n">echo</span><span class="w"> </span><span class="s2">&quot;Erreur, vous n&#39;avez pas tapé un nombre entier &gt;0. Recommencez svp...&quot;</span>
 <a id="__codelineno-13-34" name="__codelineno-13-34" href="#__codelineno-13-34"></a><span class="k">Loop</span>
 <a id="__codelineno-13-35" name="__codelineno-13-35" href="#__codelineno-13-35"></a>
-<a id="__codelineno-13-36" name="__codelineno-13-36" href="#__codelineno-13-36"></a><span class="c1">&#39; confirmation</span>
+<a id="__codelineno-13-36" name="__codelineno-13-36" href="#__codelineno-13-36"></a><span class="c1">&#39; conferma</span>
 <a id="__codelineno-13-37" name="__codelineno-13-37" href="#__codelineno-13-37"></a><span class="n">wscript</span><span class="p">.</span><span class="n">echo</span><span class="w"> </span><span class="s2">&quot;Merci pour le nombre entier &gt;0 : &quot;</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">nombre</span>
 <a id="__codelineno-13-38" name="__codelineno-13-38" href="#__codelineno-13-38"></a>
-<a id="__codelineno-13-39" name="__codelineno-13-39" href="#__codelineno-13-39"></a><span class="c1">&#39; and end</span>
+<a id="__codelineno-13-39" name="__codelineno-13-39" href="#__codelineno-13-39"></a><span class="c1">&#39; e fine</span>
 <a id="__codelineno-13-40" name="__codelineno-13-40" href="#__codelineno-13-40"></a><span class="n">wscript</span><span class="p">.</span><span class="n">quit</span><span class="w"> </span><span class="mi">0</span>
 </code></pre></div>
-<p><strong>Risultati</strong></p>
+</div></td></tr><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0"><b>Risultati</b></div></td></tr><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div markdown="block">
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-14-1"> 1</a></span>
 <span class="normal"><a href="#__codelineno-14-2"> 2</a></span>
 <span class="normal"><a href="#__codelineno-14-3"> 3</a></span>
@@ -926,55 +936,57 @@
 <a id="__codelineno-14-9" name="__codelineno-14-9"></a>Tapez un nombre entier &gt;0: 1
 <a id="__codelineno-14-10" name="__codelineno-14-10"></a>Merci pour le nombre entier &gt;0 : 1
 </code></pre></div></td></tr></table></div>
-<p>Trovare l&#x27;espressione regolare che ci permette di verificare se una stringa corrisponde a un determinato modello può a volte essere una vera sfida. Il seguente programma ti permette di esercitarti. Ti chiede un modello e una stringa, e poi indica se la stringa corrisponde o meno al modello.</p>
-<p><strong>Programma</strong></p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a><span class="c1">&#39; regular expression</span>
+</div></td></tr></table>
+
+<p>Trovare l&#x27;espressione regolare che ci permetta di verificare se una stringa corrisponde effettivamente a un determinato modello è talvolta una vera sfida. Il seguente programma permette di esercitarsi. Richiede un modello e una stringa e indica quindi se la stringa corrisponde o meno al modello.</p>
+<table class="odt-table" style="border-collapse: collapse; width: 100%; margin-bottom: 1em;"><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0"><b>Programma</b></div></td></tr><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div markdown="block">
+<div class="highlight"><pre><span></span><code><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a><span class="c1">&#39; espressione regolare</span>
 <a id="__codelineno-15-2" name="__codelineno-15-2" href="#__codelineno-15-2"></a>
-<a id="__codelineno-15-3" name="__codelineno-15-3" href="#__codelineno-15-3"></a><span class="c1">&#39; we want to check that a chain corresponds to a model</span>
+<a id="__codelineno-15-3" name="__codelineno-15-3" href="#__codelineno-15-3"></a><span class="c1">&#39; si vuole verificare che una stringa corrisponda a un modello</span>
 <a id="__codelineno-15-4" name="__codelineno-15-4" href="#__codelineno-15-4"></a>
 <a id="__codelineno-15-5" name="__codelineno-15-5" href="#__codelineno-15-5"></a><span class="k">Option</span><span class="w"> </span><span class="k">Explicit</span>
 <a id="__codelineno-15-6" name="__codelineno-15-6" href="#__codelineno-15-6"></a>
-<a id="__codelineno-15-7" name="__codelineno-15-7" href="#__codelineno-15-7"></a><span class="c1">&#39; we define the</span>
+<a id="__codelineno-15-7" name="__codelineno-15-7" href="#__codelineno-15-7"></a><span class="c1">&#39; si definisce il modello</span>
 <a id="__codelineno-15-8" name="__codelineno-15-8" href="#__codelineno-15-8"></a><span class="kd">Dim</span><span class="w"> </span><span class="nv">modele</span>
 <a id="__codelineno-15-9" name="__codelineno-15-9" href="#__codelineno-15-9"></a><span class="k">Set</span><span class="w"> </span><span class="n">modele</span><span class="o">=</span><span class="k">new</span><span class="w"> </span><span class="nb">regexp</span>
-<a id="__codelineno-15-10" name="__codelineno-15-10" href="#__codelineno-15-10"></a><span class="n">modele</span><span class="p">.</span><span class="k">global</span><span class="o">=</span><span class="no">true</span><span class="w">                      </span><span class="c1">&#39; we will search for the model several times in the chain</span>
+<a id="__codelineno-15-10" name="__codelineno-15-10" href="#__codelineno-15-10"></a><span class="n">modele</span><span class="p">.</span><span class="k">global</span><span class="o">=</span><span class="no">true</span><span class="w">                      </span><span class="c1">&#39; on recherchera le modèle plusieurs fois dans la chaîne</span>
 <a id="__codelineno-15-11" name="__codelineno-15-11" href="#__codelineno-15-11"></a>
-<a id="__codelineno-15-12" name="__codelineno-15-12" href="#__codelineno-15-12"></a><span class="c1">&#39; the user specifies the string in which to search for the model</span>
+<a id="__codelineno-15-12" name="__codelineno-15-12" href="#__codelineno-15-12"></a><span class="c1">&#39; è l&#39;utente a fornire la stringa in cui si cercherà il modello</span>
 <a id="__codelineno-15-13" name="__codelineno-15-13" href="#__codelineno-15-13"></a><span class="kd">Dim</span><span class="w"> </span><span class="nv">chaine</span><span class="p">,</span><span class="w"> </span><span class="nv">correspondances</span><span class="p">,</span><span class="w"> </span><span class="nv">i</span>
 <a id="__codelineno-15-14" name="__codelineno-15-14" href="#__codelineno-15-14"></a>
 <a id="__codelineno-15-15" name="__codelineno-15-15" href="#__codelineno-15-15"></a><span class="k">Do</span><span class="w"> </span><span class="k">While</span><span class="w"> </span><span class="no">true</span>
-<a id="__codelineno-15-16" name="__codelineno-15-16" href="#__codelineno-15-16"></a><span class="w">    </span><span class="c1">&#39; the user is asked to type in a template</span>
+<a id="__codelineno-15-16" name="__codelineno-15-16" href="#__codelineno-15-16"></a><span class="w">    </span><span class="c1">&#39; si chiede all&#39;utente di digitare un modello</span>
 <a id="__codelineno-15-17" name="__codelineno-15-17" href="#__codelineno-15-17"></a><span class="w">    </span><span class="n">wscript</span><span class="p">.</span><span class="n">stdout</span><span class="p">.</span><span class="n">write</span><span class="w"> </span><span class="s2">&quot;Tapez le modèle à tester et fin pour arrêter : &quot;</span>
 <a id="__codelineno-15-18" name="__codelineno-15-18" href="#__codelineno-15-18"></a><span class="w">    </span><span class="n">modele</span><span class="p">.</span><span class="n">pattern</span><span class="o">=</span><span class="n">wscript</span><span class="p">.</span><span class="n">stdin</span><span class="p">.</span><span class="n">readLine</span>
-<a id="__codelineno-15-19" name="__codelineno-15-19" href="#__codelineno-15-19"></a><span class="w">    </span><span class="c1">&#39; finished?</span>
+<a id="__codelineno-15-19" name="__codelineno-15-19" href="#__codelineno-15-19"></a><span class="w">    </span><span class="c1">&#39; finito?</span>
 <a id="__codelineno-15-20" name="__codelineno-15-20" href="#__codelineno-15-20"></a><span class="w">    </span><span class="k">If</span><span class="w"> </span><span class="n">modele</span><span class="p">.</span><span class="n">pattern</span><span class="o">=</span><span class="s2">&quot;fin&quot;</span><span class="w"> </span><span class="k">Then</span><span class="w"> </span><span class="k">Exit</span><span class="w"> </span><span class="k">Do</span>
-<a id="__codelineno-15-21" name="__codelineno-15-21" href="#__codelineno-15-21"></a><span class="w">        </span><span class="c1">&#39; the user is asked for the strings to be compared with the model</span>
+<a id="__codelineno-15-21" name="__codelineno-15-21" href="#__codelineno-15-21"></a><span class="w">        </span><span class="c1">&#39; si chiede all&#39;utente quali stringhe confrontare con il modello</span>
 <a id="__codelineno-15-22" name="__codelineno-15-22" href="#__codelineno-15-22"></a><span class="w">        </span><span class="k">Do</span><span class="w"> </span><span class="k">While</span><span class="w"> </span><span class="no">true</span>
-<a id="__codelineno-15-23" name="__codelineno-15-23" href="#__codelineno-15-23"></a><span class="w">            </span><span class="c1">&#39; the user is asked to type in a template</span>
+<a id="__codelineno-15-23" name="__codelineno-15-23" href="#__codelineno-15-23"></a><span class="w">            </span><span class="c1">&#39; si chiede all&#39;utente di digitare un modello</span>
 <a id="__codelineno-15-24" name="__codelineno-15-24" href="#__codelineno-15-24"></a><span class="w">            </span><span class="n">wscript</span><span class="p">.</span><span class="n">stdout</span><span class="p">.</span><span class="n">writeLine</span><span class="w"> </span><span class="s2">&quot;Tapez la chaîne à tester avec le modèle [&quot;</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">modele</span><span class="p">.</span><span class="n">pattern</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="s2">&quot;] et fin pour arrêter : &quot;</span>
 <a id="__codelineno-15-25" name="__codelineno-15-25" href="#__codelineno-15-25"></a><span class="w">            </span><span class="n">chaine</span><span class="o">=</span><span class="n">wscript</span><span class="p">.</span><span class="n">stdin</span><span class="p">.</span><span class="n">readLine</span>
-<a id="__codelineno-15-26" name="__codelineno-15-26" href="#__codelineno-15-26"></a><span class="w">            </span><span class="c1">&#39; finished?</span>
+<a id="__codelineno-15-26" name="__codelineno-15-26" href="#__codelineno-15-26"></a><span class="w">            </span><span class="c1">&#39; finito?</span>
 <a id="__codelineno-15-27" name="__codelineno-15-27" href="#__codelineno-15-27"></a><span class="w">            </span><span class="k">If</span><span class="w"> </span><span class="n">chaine</span><span class="o">=</span><span class="s2">&quot;fin&quot;</span><span class="w"> </span><span class="k">Then</span><span class="w"> </span><span class="k">Exit</span><span class="w"> </span><span class="k">Do</span>
-<a id="__codelineno-15-28" name="__codelineno-15-28" href="#__codelineno-15-28"></a><span class="w">            </span><span class="c1">&#39; the string read is compared with the date template</span>
+<a id="__codelineno-15-28" name="__codelineno-15-28" href="#__codelineno-15-28"></a><span class="w">            </span><span class="c1">&#39; si confronta la stringa letta con il modello della data</span>
 <a id="__codelineno-15-29" name="__codelineno-15-29" href="#__codelineno-15-29"></a><span class="w">            </span><span class="k">Set</span><span class="w"> </span><span class="n">correspondances</span><span class="o">=</span><span class="n">modele</span><span class="p">.</span><span class="k">execute</span><span class="p">(</span><span class="n">chaine</span><span class="p">)</span>
-<a id="__codelineno-15-30" name="__codelineno-15-30" href="#__codelineno-15-30"></a><span class="w">            </span><span class="c1">&#39; was a match found</span>
+<a id="__codelineno-15-30" name="__codelineno-15-30" href="#__codelineno-15-30"></a><span class="w">            </span><span class="c1">&#39; È stata trovata una corrispondenza?</span>
 <a id="__codelineno-15-31" name="__codelineno-15-31" href="#__codelineno-15-31"></a><span class="w">            </span><span class="k">If</span><span class="w"> </span><span class="n">correspondances</span><span class="p">.</span><span class="n">count</span><span class="o">&lt;&gt;</span><span class="mi">0</span><span class="w"> </span><span class="k">Then</span>
-<a id="__codelineno-15-32" name="__codelineno-15-32" href="#__codelineno-15-32"></a><span class="w">                </span><span class="c1">&#39; we have at least one match</span>
+<a id="__codelineno-15-32" name="__codelineno-15-32" href="#__codelineno-15-32"></a><span class="w">                </span><span class="c1">&#39; si ha almeno una corrispondenza</span>
 <a id="__codelineno-15-33" name="__codelineno-15-33" href="#__codelineno-15-33"></a><span class="w">                </span><span class="k">For</span><span class="w"> </span><span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="w"> </span><span class="n">To</span><span class="w"> </span><span class="n">correspondances</span><span class="p">.</span><span class="n">count</span><span class="o">-</span><span class="mi">1</span>
-<a id="__codelineno-15-34" name="__codelineno-15-34" href="#__codelineno-15-34"></a><span class="w">                    </span><span class="c1">&#39; the i correspondence is displayed</span>
+<a id="__codelineno-15-34" name="__codelineno-15-34" href="#__codelineno-15-34"></a><span class="w">                    </span><span class="c1">&#39; si visualizza la corrispondenza i</span>
 <a id="__codelineno-15-35" name="__codelineno-15-35" href="#__codelineno-15-35"></a><span class="w">                    </span><span class="n">wscript</span><span class="p">.</span><span class="n">echo</span><span class="w"> </span><span class="s2">&quot;J&#39;ai trouvé la correspondance &quot;</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">correspondances</span><span class="p">(</span><span class="n">i</span><span class="p">).</span><span class="n">value</span>
 <a id="__codelineno-15-36" name="__codelineno-15-36" href="#__codelineno-15-36"></a><span class="w">                </span><span class="k">Next</span>
 <a id="__codelineno-15-37" name="__codelineno-15-37" href="#__codelineno-15-37"></a><span class="w">            </span><span class="k">Else</span>
-<a id="__codelineno-15-38" name="__codelineno-15-38" href="#__codelineno-15-38"></a><span class="w">                </span><span class="c1">&#39; no correspondence</span>
+<a id="__codelineno-15-38" name="__codelineno-15-38" href="#__codelineno-15-38"></a><span class="w">                </span><span class="c1">&#39; nessuna corrispondenza</span>
 <a id="__codelineno-15-39" name="__codelineno-15-39" href="#__codelineno-15-39"></a><span class="w">                </span><span class="n">wscript</span><span class="p">.</span><span class="n">echo</span><span class="w"> </span><span class="s2">&quot;Je n&#39;ai pas trouvé de correspondance&quot;</span>
 <a id="__codelineno-15-40" name="__codelineno-15-40" href="#__codelineno-15-40"></a><span class="w">            </span><span class="k">End</span><span class="w"> </span><span class="k">If</span>
 <a id="__codelineno-15-41" name="__codelineno-15-41" href="#__codelineno-15-41"></a><span class="w">    </span><span class="k">Loop</span>
 <a id="__codelineno-15-42" name="__codelineno-15-42" href="#__codelineno-15-42"></a><span class="k">Loop</span>
 <a id="__codelineno-15-43" name="__codelineno-15-43" href="#__codelineno-15-43"></a>
-<a id="__codelineno-15-44" name="__codelineno-15-44" href="#__codelineno-15-44"></a><span class="c1">&#39; finish</span>
+<a id="__codelineno-15-44" name="__codelineno-15-44" href="#__codelineno-15-44"></a><span class="c1">&#39; fine</span>
 <a id="__codelineno-15-45" name="__codelineno-15-45" href="#__codelineno-15-45"></a><span class="n">wscript</span><span class="p">.</span><span class="n">quit</span><span class="w"> </span><span class="mi">0</span>
 </code></pre></div>
-<p><strong>Risultati</strong></p>
+</div></td></tr><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0"><b>Risultati</b></div></td></tr><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div markdown="block">
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-16-1"> 1</a></span>
 <span class="normal"><a href="#__codelineno-16-2"> 2</a></span>
 <span class="normal"><a href="#__codelineno-16-3"> 3</a></span>
@@ -1001,107 +1013,107 @@
 <a id="__codelineno-16-12" name="__codelineno-16-12"></a>145,678
 <a id="__codelineno-16-13" name="__codelineno-16-13"></a>J&#39;ai trouvé la correspondance [  145,678   ]
 </code></pre></div></td></tr></table></div>
-<p><a id="refheading1877932734444"></a>
-<a id="toc535044813"></a></p>
-<h2 id="43-gestione-degli-errori-di-runtime">4.3. <span style="color: #4f81bd">Gestione degli errori di runtime</span></h2>
-<p>Un altro metodo per gestire gli errori di runtime consiste nel lasciarli verificarsi, ricevere una notifica e poi gestirli. Normalmente, quando si verifica un errore durante l&#x27;esecuzione, WSH visualizza un messaggio di errore e il programma si interrompe. Due istruzioni ci consentono di modificare questo comportamento:</p>
+</div></td></tr></table>
+
+<p><span id="refheading1877932734444" name="refheading1877932734444" class="odt-bookmark-anchor"></span>
+<span id="toc535044813" name="toc535044813" class="odt-bookmark-anchor"></span></p>
+<h2 id="43-intercettare-gli-errori-di-esecuzione">4.3. <span style="color: #4f81bd">Intercettare gli errori di esecuzione</span></h2>
+<p>Un altro metodo per gestire gli errori di esecuzione consiste nel lasciarli verificarsi, ricevere una notifica e gestirli in quel momento. Normalmente, quando si verifica un errore durante l’esecuzione, WSH visualizza un messaggio di errore e il programma viene interrotto. Due istruzioni ci consentono di modificare questo comportamento:</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-17-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-17-1" name="__codelineno-17-1"></a>on error resume next
 </code></pre></div></td></tr></table></div>
-<p>Questa istruzione comunica al sistema (WSH) che gestiremo gli errori autonomamente. Dopo questa istruzione, eventuali errori vengono semplicemente ignorati dal sistema.</p>
+<p>Questa istruzione indica al sistema (WSH) che gestiremo gli errori autonomamente. Dopo questa istruzione, qualsiasi errore viene semplicemente ignorato dal sistema.</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-18-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-18-1" name="__codelineno-18-1"></a>on error goto 0
 </code></pre></div></td></tr></table></div>
-<p>Questa istruzione ci riporta alla normale gestione degli errori.</p>
-<p>Quando l&#x27;istruzione <strong>on error resume next</strong> è attiva, dobbiamo gestire autonomamente eventuali errori che potrebbero verificarsi. L&#x27;oggetto <strong>Err</strong> ci aiuta a farlo. Questo oggetto ha varie proprietà e metodi, tra cui ci concentreremo sui seguenti due:</p>
+<p>Questa istruzione ripristina il normale funzionamento della gestione degli errori.</p>
+<p>Quando l’istruzione <strong><code>on error resume next</code></strong> è attiva, dobbiamo gestire autonomamente gli errori che possono verificarsi. L’oggetto <code>**Err</code>** ci aiuta in questo. Questo oggetto presenta diverse proprietà e metodi, tra cui ricorderemo i seguenti due:</p>
 <ul>
-  <li><b>number</b>: un numero intero che rappresenta il numero dell&#x27;ultimo errore verificatosi. 0 significa &quot;nessun errore&quot;
+  <li><b>number</b>: un numero intero che indica il numero dell’ultimo errore verificatosi. 0 significa “nessun errore”
   </li>
-  <li><b>description</b>: il messaggio di errore che il sistema avrebbe visualizzato se non avessimo emesso l&#x27;istruzione<b> on error resume next</b> 
+  <li><b>description</b>: il messaggio di errore che il sistema avrebbe visualizzato se non fosse stata emessa l’istruzione <b>on error resume next </b>
   </li>
 </ul>
 
-<p>Diamo un&#x27;occhiata al seguente esempio:</p>
-<p><strong>Programma</strong></p>
-<div class="odt-code-rich" data-linenums="true" style="counter-reset: odtline 0;"><pre><code class="language-vbscript">
-<span class="odt-code-line"><span class="odt-code-line-content">&#x27; unhandled error</span></span>
-<span class="odt-code-line"><span class="odt-code-line-content"> </span></span>
+<p>Diamo un’occhiata all’esempio seguente:</p>
+<table class="odt-table" style="border-collapse: collapse; width: 100%; margin-bottom: 1em;"><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0"><b>Programma</b></div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0"><b>Risultati</b></div></td></tr><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div class="odt-code-rich" data-linenums="true" style="counter-reset: odtline 0;"><pre><code class="language-vbscript">
+<span class="odt-code-line"><span class="odt-code-line-content">&#x27; errore non gestito</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"></span></span>
 <span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#00007f">Option</span><span style="color:#000000"> </span><span style="color:#00007f">Explicit</span></span></span>
 <span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#00007f">Dim</span><span style="color:#000000"> nombre</span></span></span>
-<span class="odt-code-line"><span class="odt-code-line-content"> </span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"></span></span>
 <span class="odt-code-line"><span class="odt-code-line-content">nombre=cdbl(&quot;abcd&quot;)</span></span>
 <span class="odt-code-line"><span class="odt-code-line-content">wscript.echo &quot;nombre=&quot; &amp; nombre</span></span>
-</code></pre></div>
-
-<p><strong>Risultati</strong></p>
+</code></pre></div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div markdown="block">
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-19-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-19-1" name="__codelineno-19-1"></a>C:\ err5.vbs(6, 1) Erreur d&#39;exécution Microsoft VBScript: Type incompatible: &#39;cdbl&#39;
 </code></pre></div></td></tr></table></div>
-<p>Ora gestiamo l&#x27;errore:</p>
-<p><strong>Programma</strong></p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-20-1" name="__codelineno-20-1" href="#__codelineno-20-1"></a><span class="c1">&#39; managed error</span>
+</div></td></tr></table>
+
+<p>Gestiamo ora l&#x27;errore:</p>
+<table class="odt-table" style="border-collapse: collapse; width: 100%; margin-bottom: 1em;"><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0"><b>Programma</b></div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0"><b>Risultati</b></div></td></tr><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div markdown="block">
+<div class="highlight"><pre><span></span><code><a id="__codelineno-20-1" name="__codelineno-20-1" href="#__codelineno-20-1"></a><span class="c1">&#39; errore gestito</span>
 <a id="__codelineno-20-2" name="__codelineno-20-2" href="#__codelineno-20-2"></a>
 <a id="__codelineno-20-3" name="__codelineno-20-3" href="#__codelineno-20-3"></a><span class="k">Option</span><span class="w"> </span><span class="k">Explicit</span>
 <a id="__codelineno-20-4" name="__codelineno-20-4" href="#__codelineno-20-4"></a><span class="kd">Dim</span><span class="w"> </span><span class="nv">nombre</span>
 <a id="__codelineno-20-5" name="__codelineno-20-5" href="#__codelineno-20-5"></a>
-<a id="__codelineno-20-6" name="__codelineno-20-6" href="#__codelineno-20-6"></a><span class="c1">&#39; we manage mistakes ourselves</span>
+<a id="__codelineno-20-6" name="__codelineno-20-6" href="#__codelineno-20-6"></a><span class="c1">&#39; gestiamo gli errori autonomamente</span>
 <a id="__codelineno-20-7" name="__codelineno-20-7" href="#__codelineno-20-7"></a><span class="k">On</span><span class="w"> </span><span class="k">Error</span><span class="w"> </span><span class="k">Resume</span><span class="w"> </span><span class="k">Next</span>
 <a id="__codelineno-20-8" name="__codelineno-20-8" href="#__codelineno-20-8"></a><span class="n">nombre</span><span class="o">=</span><span class="nb">cdbl</span><span class="p">(</span><span class="s2">&quot;abcd&quot;</span><span class="p">)</span>
-<a id="__codelineno-20-9" name="__codelineno-20-9" href="#__codelineno-20-9"></a><span class="c1">&#39; was there a mistake?</span>
+<a id="__codelineno-20-9" name="__codelineno-20-9" href="#__codelineno-20-9"></a><span class="c1">&#39; si è verificato un errore?</span>
 <a id="__codelineno-20-10" name="__codelineno-20-10" href="#__codelineno-20-10"></a><span class="k">If</span><span class="w"> </span><span class="nb">Err</span><span class="p">.</span><span class="n">number</span><span class="o">&lt;&gt;</span><span class="mi">0</span><span class="w"> </span><span class="k">Then</span>
 <a id="__codelineno-20-11" name="__codelineno-20-11" href="#__codelineno-20-11"></a><span class="w">    </span><span class="n">wscript</span><span class="p">.</span><span class="n">echo</span><span class="w"> </span><span class="s2">&quot;L&#39;erreur [&quot;</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="nb">err</span><span class="p">.</span><span class="n">description</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="s2">&quot;] s&#39;est produite&quot;</span>
 <a id="__codelineno-20-12" name="__codelineno-20-12" href="#__codelineno-20-12"></a><span class="w">    </span><span class="k">On</span><span class="w"> </span><span class="k">Error</span><span class="w"> </span><span class="k">GoTo</span><span class="w"> </span><span class="mi">0</span>
 <a id="__codelineno-20-13" name="__codelineno-20-13" href="#__codelineno-20-13"></a><span class="w">    </span><span class="n">wscript</span><span class="p">.</span><span class="n">quit</span><span class="w"> </span><span class="mi">1</span>
 <a id="__codelineno-20-14" name="__codelineno-20-14" href="#__codelineno-20-14"></a><span class="k">End</span><span class="w"> </span><span class="k">If</span>
-<a id="__codelineno-20-15" name="__codelineno-20-15" href="#__codelineno-20-15"></a><span class="c1">&#39; no error - returns to normal operation</span>
+<a id="__codelineno-20-15" name="__codelineno-20-15" href="#__codelineno-20-15"></a><span class="c1">&#39; nessun errore - si torna al funzionamento normale</span>
 <a id="__codelineno-20-16" name="__codelineno-20-16" href="#__codelineno-20-16"></a><span class="k">On</span><span class="w"> </span><span class="k">Error</span><span class="w"> </span><span class="k">GoTo</span><span class="w"> </span><span class="mi">0</span>
 <a id="__codelineno-20-17" name="__codelineno-20-17" href="#__codelineno-20-17"></a><span class="n">wscript</span><span class="p">.</span><span class="n">echo</span><span class="w"> </span><span class="s2">&quot;nombre=&quot;</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">nombre</span>
 <a id="__codelineno-20-18" name="__codelineno-20-18" href="#__codelineno-20-18"></a><span class="n">wscript</span><span class="p">.</span><span class="n">quit</span><span class="w"> </span><span class="mi">0</span>
 </code></pre></div>
-<p><strong>Risultati</strong></p>
+</div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div markdown="block">
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-21-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-21-1" name="__codelineno-21-1"></a>L&#39;erreur [Type incompatible] s&#39;est produite
 </code></pre></div></td></tr></table></div>
-<p>Riscriviamo il programma per l&#x27;inserimento di un numero intero &gt;0 utilizzando questo nuovo metodo:</p>
-<p><strong>Programma</strong></p>
-<div class="odt-code-rich" data-linenums="false" style="counter-reset: odtline 0;"><pre><code class="language-vbscript">
-<span class="odt-code-line"><span class="odt-code-line-content">&#x27; read data until it is recognized as a number</span></span>
-<span class="odt-code-line"><span class="odt-code-line-content"> </span></span>
+</div></td></tr></table>
+
+<p>Riscriviamo il programma per l&#x27;immissione di un numero intero &gt;0 utilizzando questo nuovo metodo:</p>
+<table class="odt-table" style="border-collapse: collapse; width: 100%; margin-bottom: 1em;"><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0"><b>Programma</b></div></td></tr><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div class="odt-code-rich" data-linenums="false" style="counter-reset: odtline 0;"><pre><code class="language-vbscript">
+<span class="odt-code-line"><span class="odt-code-line-content">&#x27; lettura di un dato fino a quando non viene riconosciuto come numero</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"></span></span>
 <span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#00007f">Option</span><span style="color:#000000"> </span><span style="color:#00007f">Explicit</span></span></span>
-<span class="odt-code-line"><span class="odt-code-line-content"> </span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"></span></span>
 <span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#00007f">Dim</span><span style="color:#000000"> fini, nombre</span></span></span>
-<span class="odt-code-line"><span class="odt-code-line-content"> </span></span>
-<span class="odt-code-line"><span class="odt-code-line-content">&#x27; loop until the data entered is correct</span></span>
-<span class="odt-code-line"><span class="odt-code-line-content">&#x27; the loop is controlled by a finite boolean, set to false at the start (= it&#x27;s not finite)</span></span>
-<span class="odt-code-line"><span class="odt-code-line-content"> </span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">&#x27; si ripete il ciclo finché il dato inserito non è corretto</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">&#x27; il ciclo è controllato da una variabile booleana finita, impostata su falso all&#x27;inizio (= non è finito)</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"></span></span>
 <span class="odt-code-line"><span class="odt-code-line-content">fini=false</span></span>
 <span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#00007f">Do</span><span style="color:#000000"> </span><span style="color:#00007f">While</span><span style="color:#000000"> </span><span style="color:#00007f">Not</span><span style="color:#000000"> fini</span></span></span>
-<span class="odt-code-line"><span class="odt-code-line-content">  &#x27; we ask for the number</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">  &#x27; si richiede il numero</span></span>
 <span class="odt-code-line"><span class="odt-code-line-content">  wscript.stdout.write &quot;Tapez un nombre entier &gt;0: &quot;</span></span>
-<span class="odt-code-line"><span class="odt-code-line-content">  &#x27; we read it</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">  &#x27; lo si legge</span></span>
 <span class="odt-code-line"><span class="odt-code-line-content">  nombre=wscript.stdin.readLine</span></span>
-<span class="odt-code-line"><span class="odt-code-line-content">  &#x27; test the format of the data read</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">  &#x27; si verifica il formato del dato letto</span></span>
 <span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">  </span><span style="color:#00007f">On</span><span style="color:#000000"> </span><span style="color:#00007f">Error</span><span style="color:#000000"> </span><span style="color:#00007f">Resume</span><span style="color:#000000"> </span><span style="color:#00007f">Next</span></span></span>
-<span class="odt-code-line"><span class="odt-code-line-content">  nombre=cdbl(nombre)</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">  </span><span style="color:#000000">nombre=cdbl(nombre)</span></span></span>
 <span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">  </span><span style="color:#00007f">If</span><span style="color:#000000"> err.number=0 </span><span style="color:#00007f">Then</span></span></span>
-<span class="odt-code-line"><span class="odt-code-line-content">    &#x27; no error it&#x27;s a number</span></span>
-<span class="odt-code-line"><span class="odt-code-line-content">    &#x27; returns to normal error handling mode</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">    &#x27; nessun errore, è un numero</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">    &#x27; si torna alla modalità normale di gestione degli errori</span></span>
 <span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">    </span><span style="color:#00007f">On</span><span style="color:#000000"> </span><span style="color:#00007f">Error</span><span style="color:#000000"> </span><span style="color:#00007f">GoTo</span><span style="color:#000000"> 0</span></span></span>
-<span class="odt-code-line"><span class="odt-code-line-content">    &#x27; is it an integer &gt;0</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">    &#x27; è un numero intero &gt;0</span></span>
 <span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">    </span><span style="color:#00007f">If</span><span style="color:#000000"> (nombre-int(nombre))=0 </span><span style="color:#00007f">And</span><span style="color:#000000"> nombre&gt;0 </span><span style="color:#00007f">Then</span></span></span>
-<span class="odt-code-line"><span class="odt-code-line-content">      fini=true</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">      </span><span style="color:#000000">fini=true</span></span></span>
 <span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">    </span><span style="color:#00007f">End</span><span style="color:#000000"> </span><span style="color:#00007f">If</span></span></span>
 <span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">  </span><span style="color:#00007f">End</span><span style="color:#000000"> </span><span style="color:#00007f">If</span></span></span>
-<span class="odt-code-line"><span class="odt-code-line-content">  &#x27; returns to normal error handling mode</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">  &#x27; si torna alla modalità normale di gestione degli errori</span></span>
 <span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">  </span><span style="color:#00007f">On</span><span style="color:#000000"> </span><span style="color:#00007f">Error</span><span style="color:#000000"> </span><span style="color:#00007f">GoTo</span><span style="color:#000000"> 0</span></span></span>
-<span class="odt-code-line"><span class="odt-code-line-content">  &#x27; possible error msg</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">  &#x27; eventuale messaggio di errore</span></span>
 <span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">  </span><span style="color:#00007f">If</span><span style="color:#000000"> </span><span style="color:#00007f">Not</span><span style="color:#000000"> fini </span><span style="color:#00007f">Then</span><span style="color:#000000"> wscript.echo &quot;Erreur, vous n&#x27;avez pas tapé un nombre entier &gt;0. Recommencez svp...&quot;</span></span></span>
 <span class="odt-code-line"><span class="odt-code-line-content">Loop</span></span>
-<span class="odt-code-line"><span class="odt-code-line-content"> </span></span>
-<span class="odt-code-line"><span class="odt-code-line-content">&#x27; confirmation</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">&#x27; conferma</span></span>
 <span class="odt-code-line"><span class="odt-code-line-content">wscript.echo &quot;Merci pour le nombre entier &gt;0 : &quot; &amp; nombre</span></span>
-<span class="odt-code-line"><span class="odt-code-line-content"> </span></span>
-<span class="odt-code-line"><span class="odt-code-line-content">&#x27; and end</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">&#x27; e fine</span></span>
 <span class="odt-code-line"><span class="odt-code-line-content">wscript.quit 0</span></span>
-</code></pre></div>
-
-<p><strong>Risultati</strong></p>
+</code></pre></div></td></tr><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0"><b>Risultati</b></div></td></tr><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div markdown="block">
 <div class="highlight"><pre><span></span><code><a id="__codelineno-22-1" name="__codelineno-22-1" href="#__codelineno-22-1"></a>Tapez un nombre entier &gt;0: 4.5
 <a id="__codelineno-22-2" name="__codelineno-22-2" href="#__codelineno-22-2"></a>Erreur, vous n&#39;avez pas tapé un nombre entier &gt;0. Recommencez svp...
 <a id="__codelineno-22-3" name="__codelineno-22-3" href="#__codelineno-22-3"></a>Tapez un nombre entier &gt;0: 4,5
@@ -1113,27 +1125,29 @@
 <a id="__codelineno-22-9" name="__codelineno-22-9" href="#__codelineno-22-9"></a>Tapez un nombre entier &gt;0: 1
 <a id="__codelineno-22-10" name="__codelineno-22-10" href="#__codelineno-22-10"></a>Merci pour le nombre entier &gt;0 : 1
 </code></pre></div>
-<p><strong>Commenti:</strong></p>
+</div></td></tr></table>
+
+<p><strong>Note:</strong></p>
 <ul>
-  <li>Questo metodo è talvolta l&#x27;unico utilizzabile. In tal caso, non dimenticare di tornare alla normale modalità di gestione degli errori non appena la sequenza di istruzioni che potrebbe generare l&#x27;errore è completata.
+  <li>Questo metodo è talvolta l&#x27;unico utilizzabile. In tal caso, è importante non dimenticare di tornare alla modalità normale di gestione degli errori non appena la sequenza di istruzioni che potrebbe generare l&#x27;errore è terminata.
   </li>
 </ul>
-<p><a id="refheading1878132734444"></a>
-<a id="toc535044814"></a></p>
-<h2 id="44-applicazione-al-programma-di-calcolo-delle-imposte">4.4. <span style="color: #4f81bd">Applicazione al programma di calcolo delle imposte</span></h2>
-<p>Riprenderemo il programma di calcolo delle imposte che abbiamo scritto in precedenza per, questa volta, verificare la validità degli argomenti passati al programma:</p>
-<p><strong>Programma</strong></p>
-<div class="odt-code-rich" data-linenums="false" style="counter-reset: odtline 0;"><pre><code class="language-vbscript">
-<span class="odt-code-line"><span class="odt-code-line-content">&#x27; calculating a taxpayer&#x27;s tax liability</span></span>
-<span class="odt-code-line"><span class="odt-code-line-content">&#x27; the program must be called with three parameters: married children salary</span></span>
-<span class="odt-code-line"><span class="odt-code-line-content">&#x27; married: character Y if married, N if unmarried</span></span>
-<span class="odt-code-line"><span class="odt-code-line-content">&#x27; children: number of children</span></span>
-<span class="odt-code-line"><span class="odt-code-line-content">&#x27; salary: annual salary without cents</span></span>
-<span class="odt-code-line"><span class="odt-code-line-content"> </span></span>
-<span class="odt-code-line"><span class="odt-code-line-content">&#x27; no verification of data validity is performed, but we do</span></span>
-<span class="odt-code-line"><span class="odt-code-line-content">&#x27; check that there are three of them</span></span>
-<span class="odt-code-line"><span class="odt-code-line-content"> </span></span>
-<span class="odt-code-line"><span class="odt-code-line-content">&#x27; mandatory variable declaration</span></span>
+
+<p><span id="refheading1878132734444" name="refheading1878132734444" class="odt-bookmark-anchor"></span>
+<span id="toc535044814" name="toc535044814" class="odt-bookmark-anchor"></span></p>
+<h2 id="44-applicazione-al-programma-di-calcolo-delle-imposte">4.4. <span style="color: #4f81bd"><strong>Applicazione al programma di calcolo delle imposte</strong></span></h2>
+<p>Riprendiamo il programma di calcolo delle imposte già scritto per verificare, questa volta, la validità degli argomenti passati al programma:</p>
+<table class="odt-table" style="border-collapse: collapse; width: 100%; margin-bottom: 1em;"><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0"><b>Programma</b></div></td></tr><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div class="odt-code-rich" data-linenums="false" style="counter-reset: odtline 0;"><pre><code class="language-vbscript">
+<span class="odt-code-line"><span class="odt-code-line-content">&#x27; calcolo dell&#x27;imposta di un contribuente</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">&#x27; il programma deve essere richiamato con tre parametri: coniugato, figli, stipendio</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">&#x27; coniugato: carattere O se coniugato, N se non coniugato</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">&#x27; figli: numero di figli</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">&#x27; stipendio: stipendio annuo senza i centesimi</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">&#x27; non viene effettuata alcuna verifica della validità dei dati, ma</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">&#x27; si verifica che ce ne siano effettivamente tre</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">&#x27; dichiarazione obbligatoria delle variabili</span></span>
 <span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#00007f">Option</span><span style="color:#000000"> </span><span style="color:#00007f">Explicit</span></span></span>
 <span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#00007f">Dim</span><span style="color:#000000"> syntaxe</span></span></span>
 <span class="odt-code-line"><span class="odt-code-line-content">syntaxe= _</span></span>
@@ -1141,67 +1155,67 @@
 <span class="odt-code-line"><span class="odt-code-line-content">    &quot;marié : caractère O si marié, N si non marié&quot; &amp; vbCRLF &amp; _</span></span>
 <span class="odt-code-line"><span class="odt-code-line-content">    &quot;enfants : nombre d&#x27;enfants (entier &gt;=0)&quot; &amp; vbCRLF &amp; _</span></span>
 <span class="odt-code-line"><span class="odt-code-line-content">    &quot;salaire : salaire annuel sans les centimes (entier &gt;=0)&quot;</span></span>
-<span class="odt-code-line"><span class="odt-code-line-content"> </span></span>
-<span class="odt-code-line"><span class="odt-code-line-content">&#x27; we check that there are 3 arguments</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">&#x27; si verifica che ci siano 3 argomenti</span></span>
 <span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">  </span><span style="color:#00007f">Dim</span><span style="color:#000000"> nbArguments</span></span></span>
 <span class="odt-code-line"><span class="odt-code-line-content">  nbArguments=wscript.arguments.count</span></span>
 <span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">  </span><span style="color:#00007f">If</span><span style="color:#000000"> nbArguments&lt;&gt;3 </span><span style="color:#00007f">Then</span></span></span>
-<span class="odt-code-line"><span class="odt-code-line-content">    &#x27; error msg</span></span>
-<span class="odt-code-line"><span class="odt-code-line-content">    wscript.echo syntaxe &amp; vbCRLF &amp; vbCRLF &amp; &quot;erreur : nombre d&#x27;arguments incorrect&quot;</span></span>
-<span class="odt-code-line"><span class="odt-code-line-content">    &#x27; stop with error code 1</span></span>
-<span class="odt-code-line"><span class="odt-code-line-content">    wscript.quit 1</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">    &#x27; messaggio di errore</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">    </span><span style="color:#000000">wscript.echo syntaxe &amp; vbCRLF &amp; vbCRLF &amp; &quot;erreur : nombre d&#x27;arguments incorrect&quot;</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">    &#x27; interruzione con codice di errore 1</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">    </span><span style="color:#000000">wscript.quit 1</span></span></span>
 <span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">  </span><span style="color:#00007f">End</span><span style="color:#000000"> </span><span style="color:#00007f">If</span></span></span>
-<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000"></span></span></span>
-<span class="odt-code-line"><span class="odt-code-line-content">&#x27; retrieve arguments and check their validity</span></span>
-<span class="odt-code-line"><span class="odt-code-line-content">&#x27; an argument is passed to the program without spaces in front and behind it</span></span>
-<span class="odt-code-line"><span class="odt-code-line-content">&#x27; use regular expressions to check data validity</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">  </span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">&#x27; si recuperano gli argomenti verificandone la validità</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">&#x27; un argomento viene trasmesso al programma senza spazi né all&#x27;inizio né alla fine</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">&#x27; si utilizzeranno espressioni regolari per verificare la validità dei dati</span></span>
 <span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">  </span><span style="color:#00007f">Dim</span><span style="color:#000000"> modele, correspondances</span></span></span>
 <span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">  </span><span style="color:#00007f">Set</span><span style="color:#000000"> modele=new regexp</span></span></span>
 <span class="odt-code-line"><span class="odt-code-line-content"></span></span>
-<span class="odt-code-line"><span class="odt-code-line-content">  &#x27; marital status must be among the characters oOnN</span></span>
-<span class="odt-code-line"><span class="odt-code-line-content">  modele.pattern=&quot;^[oOnN]$&quot;</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">  &#x27; lo stato civile deve essere uno dei caratteri oOnN</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">  </span><span style="color:#000000">modele.pattern=&quot;^[oOnN]$&quot;</span></span></span>
 <span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">  </span><span style="color:#00007f">Set</span><span style="color:#000000"> correspondances=modele.execute(wscript.arguments(0))</span></span></span>
 <span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">  </span><span style="color:#00007f">If</span><span style="color:#000000"> correspondances.count=0 </span><span style="color:#00007f">Then</span></span></span>
-<span class="odt-code-line"><span class="odt-code-line-content">    &#x27; error</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">    &#x27; errore</span></span>
 <span class="odt-code-line"><span class="odt-code-line-content">    wscript.echo syntaxe &amp; vbCRLF &amp; vbCRLF &amp; &quot;erreur : argument marie incorrect&quot;</span></span>
-<span class="odt-code-line"><span class="odt-code-line-content">    &#x27; we leave</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">    &#x27; si esce</span></span>
 <span class="odt-code-line"><span class="odt-code-line-content">    wscript.quit 2</span></span>
 <span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">  </span><span style="color:#00007f">End</span><span style="color:#000000"> </span><span style="color:#00007f">If</span></span></span>
-<span class="odt-code-line"><span class="odt-code-line-content">  &#x27; the value</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">  &#x27; si recupera il valore</span></span>
 <span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">  </span><span style="color:#00007f">Dim</span><span style="color:#000000"> marie</span></span></span>
 <span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">  </span><span style="color:#00007f">If</span><span style="color:#000000"> lcase(wscript.arguments(0)) = &quot;o&quot;</span><span style="color:#00007f">Then</span></span></span>
-<span class="odt-code-line"><span class="odt-code-line-content">    marie=true</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">    </span><span style="color:#000000">marie=true</span></span></span>
 <span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">  </span><span style="color:#00007f">Else</span></span></span>
 <span class="odt-code-line"><span class="odt-code-line-content">    marie=false</span></span>
 <span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">  </span><span style="color:#00007f">End</span><span style="color:#000000"> </span><span style="color:#00007f">If</span></span></span>
-<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000"></span></span></span>
-<span class="odt-code-line"><span class="odt-code-line-content">  &#x27; children must be an integer &gt;=0</span></span>
-<span class="odt-code-line"><span class="odt-code-line-content">  modele.pattern=&quot;^\d{1,2}$&quot;</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">  </span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">  &#x27; il numero di figli deve essere un numero intero &gt;=0</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">  </span><span style="color:#000000">modele.pattern=&quot;^\d{1,2}$&quot;</span></span></span>
 <span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">  </span><span style="color:#00007f">Set</span><span style="color:#000000"> correspondances=modele.execute(wscript.arguments(1))</span></span></span>
 <span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">  </span><span style="color:#00007f">If</span><span style="color:#000000"> correspondances.count=0 </span><span style="color:#00007f">Then</span></span></span>
-<span class="odt-code-line"><span class="odt-code-line-content">    &#x27; error</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">    &#x27; errore</span></span>
 <span class="odt-code-line"><span class="odt-code-line-content">    wscript.echo syntaxe &amp; vbCRLF &amp; vbCRLF &amp; &quot;erreur : argument enfants incorrect&quot;</span></span>
-<span class="odt-code-line"><span class="odt-code-line-content">    &#x27; we leave</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">    &#x27; uscita</span></span>
 <span class="odt-code-line"><span class="odt-code-line-content">    wscript.quit 3</span></span>
 <span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">  </span><span style="color:#00007f">End</span><span style="color:#000000"> </span><span style="color:#00007f">If</span></span></span>
-<span class="odt-code-line"><span class="odt-code-line-content">  &#x27; the value</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">  &#x27; si recupera il valore</span></span>
 <span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">  </span><span style="color:#00007f">Dim</span><span style="color:#000000"> enfants</span></span></span>
 <span class="odt-code-line"><span class="odt-code-line-content">  enfants=cint(wscript.arguments(1))</span></span>
-<span class="odt-code-line"><span class="odt-code-line-content"> </span></span>
-<span class="odt-code-line"><span class="odt-code-line-content">  &#x27; salary must be an integer &gt;=0</span></span>
-<span class="odt-code-line"><span class="odt-code-line-content">  modele.pattern=&quot;^\d{1,9}$&quot;</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">  &#x27; lo stipendio deve essere un numero intero &gt;=0</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">  </span><span style="color:#000000">modele.pattern=&quot;^\d{1,9}$&quot;</span></span></span>
 <span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">  </span><span style="color:#00007f">Set</span><span style="color:#000000"> correspondances=modele.execute(wscript.arguments(2))</span></span></span>
 <span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">  </span><span style="color:#00007f">If</span><span style="color:#000000"> correspondances.count=0 </span><span style="color:#00007f">Then</span></span></span>
-<span class="odt-code-line"><span class="odt-code-line-content">    &#x27; error</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">    &#x27; errore</span></span>
 <span class="odt-code-line"><span class="odt-code-line-content">    wscript.echo syntaxe &amp; vbCRLF &amp; vbCRLF &amp; &quot;erreur : argument salaire incorrect&quot;</span></span>
-<span class="odt-code-line"><span class="odt-code-line-content">    &#x27; we leave</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">    &#x27; uscita</span></span>
 <span class="odt-code-line"><span class="odt-code-line-content">    wscript.quit 4</span></span>
 <span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">  </span><span style="color:#00007f">End</span><span style="color:#000000"> </span><span style="color:#00007f">If</span></span></span>
-<span class="odt-code-line"><span class="odt-code-line-content">  &#x27; the value</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">  &#x27; si recupera il valore</span></span>
 <span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">  </span><span style="color:#00007f">Dim</span><span style="color:#000000"> salaire</span></span></span>
 <span class="odt-code-line"><span class="odt-code-line-content">  salaire=clng(wscript.arguments(2))</span></span>
-<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000"></span></span></span>
-<span class="odt-code-line"><span class="odt-code-line-content">  &#x27; we define the data needed to calculate the tax in 3 tables</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">  </span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">  &#x27; si definiscono i dati necessari per il calcolo dell&#x27;imposta in 3 tabelle</span></span>
 <span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">  </span><span style="color:#00007f">Dim</span><span style="color:#000000"> limites, coeffn, coeffr</span></span></span>
 <span class="odt-code-line"><span class="odt-code-line-content">  limites=array(12620,13190,15640,24740,31810,39970,48360, _</span></span>
 <span class="odt-code-line"><span class="odt-code-line-content">    55790,92970,127860,151250,172040,195000,0)</span></span>
@@ -1210,37 +1224,34 @@
 <span class="odt-code-line"><span class="odt-code-line-content">  coeffn=array(0,631,1290.5,2072.5,3309.5,4900,6898.5,9316.5, _</span></span>
 <span class="odt-code-line"><span class="odt-code-line-content">    12106,16754.5,23147.5,30710,39312,49062)</span></span>
 <span class="odt-code-line"><span class="odt-code-line-content"></span></span>
-<span class="odt-code-line"><span class="odt-code-line-content">  &#x27; the number of shares is calculated</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">  &#x27; si calcola il numero di quote</span></span>
 <span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">  </span><span style="color:#00007f">Dim</span><span style="color:#000000"> nbParts</span></span></span>
 <span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">  </span><span style="color:#00007f">If</span><span style="color:#000000"> marie=true </span><span style="color:#00007f">Then</span></span></span>
-<span class="odt-code-line"><span class="odt-code-line-content">    nbParts=(enfants/2)+2</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">    </span><span style="color:#000000">nbParts=(enfants/2)+2</span></span></span>
 <span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">  </span><span style="color:#00007f">Else</span></span></span>
 <span class="odt-code-line"><span class="odt-code-line-content">    nbParts=(enfants/2)+1</span></span>
 <span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">  </span><span style="color:#00007f">End</span><span style="color:#000000"> </span><span style="color:#00007f">If</span></span></span>
 <span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">  </span><span style="color:#00007f">If</span><span style="color:#000000"> enfants&gt;=3 </span><span style="color:#00007f">Then</span><span style="color:#000000"> nbParts=nbParts+0.5</span></span></span>
-<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000"></span></span></span>
-<span class="odt-code-line"><span class="odt-code-line-content">  &#x27; calculate the family quota and taxable income</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">  </span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">  &#x27; si calcola il quoziente familiare e il reddito imponibile</span></span>
 <span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">  </span><span style="color:#00007f">Dim</span><span style="color:#000000"> revenu, qf</span></span></span>
 <span class="odt-code-line"><span class="odt-code-line-content">  revenu=0.72*salaire</span></span>
 <span class="odt-code-line"><span class="odt-code-line-content">  qf=revenu/nbParts</span></span>
-<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000"></span></span></span>
-<span class="odt-code-line"><span class="odt-code-line-content">  &#x27; tax calculation</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">  </span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">  &#x27; si calcola l&#x27;imposta</span></span>
 <span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">  </span><span style="color:#00007f">Dim</span><span style="color:#000000"> i, impot</span></span></span>
 <span class="odt-code-line"><span class="odt-code-line-content">  i=0</span></span>
 <span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">  </span><span style="color:#00007f">Do</span><span style="color:#000000"> </span><span style="color:#00007f">While</span><span style="color:#000000"> i&lt;ubound(limites) </span><span style="color:#00007f">And</span><span style="color:#000000"> qf&gt;limites(i)</span></span></span>
 <span class="odt-code-line"><span class="odt-code-line-content">    i=i+1</span></span>
 <span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">  </span><span style="color:#00007f">Loop</span></span></span>
 <span class="odt-code-line"><span class="odt-code-line-content">  impot=int(revenu*coeffr(i)-nbParts*coeffn(i))</span></span>
-<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000"></span></span></span>
-<span class="odt-code-line"><span class="odt-code-line-content">  &#x27; the result is displayed</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">  </span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">  &#x27; viene visualizzato il risultato</span></span>
 <span class="odt-code-line"><span class="odt-code-line-content">  wscript.echo &quot;impôt=&quot; &amp; impot</span></span>
-<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000"></span></span></span>
-<span class="odt-code-line"><span class="odt-code-line-content">  &#x27; leave without error</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">  </span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">  &#x27; si esce senza errori</span></span>
 <span class="odt-code-line"><span class="odt-code-line-content">  wscript.quit 0</span></span>
-</code></pre></div>
-
-<p><strong><span style="color: #000000">Risultati</span></strong></p>
-<p><span style="color: #000000"> </span></p>
+</code></pre></div></td></tr><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0"><b>Risultati</b></div></td></tr><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div markdown="block">
 <div class="highlight"><pre><span></span><code><a id="__codelineno-23-1" name="__codelineno-23-1" href="#__codelineno-23-1"></a>C:\&gt;cscript impots2.vbs
 <a id="__codelineno-23-2" name="__codelineno-23-2" href="#__codelineno-23-2"></a>
 <a id="__codelineno-23-3" name="__codelineno-23-3" href="#__codelineno-23-3"></a>Syntaxe : pg marié enfants salaire
@@ -1283,6 +1294,7 @@
 <a id="__codelineno-23-40" name="__codelineno-23-40" href="#__codelineno-23-40"></a>
 <a id="__codelineno-23-41" name="__codelineno-23-41" href="#__codelineno-23-41"></a>impôt=22504
 </code></pre></div>
+</div></td></tr></table>
 
 
 

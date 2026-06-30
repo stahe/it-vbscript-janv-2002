@@ -18,7 +18,7 @@
         <link rel="prev" href="index.html">
       
       
-        <link rel="next" href="contesti-di-esecuzione-vbscript.html">
+        <link rel="next" href="i-contesti-di-esecuzione-di-vbscript.html">
       
       
         
@@ -56,6 +56,8 @@
     
     
       <link rel="stylesheet" href="stylesheets/focus.css">
+    
+      <link rel="stylesheet" href="stylesheets/bidi.css">
     
     <script>__md_scope=new URL(".",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
@@ -340,14 +342,14 @@
   
   
     <li class="md-nav__item">
-      <a href="contesti-di-esecuzione-vbscript.html" class="md-nav__link">
+      <a href="i-contesti-di-esecuzione-di-vbscript.html" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    2. Contesti di esecuzione VBSCRIPT
+    2. I contesti di esecuzione di VBSCRIPT
   
 
     
@@ -367,14 +369,14 @@
   
   
     <li class="md-nav__item">
-      <a href="nozioni-di-base-sulla-programmazione-in-vbscript.html" class="md-nav__link">
+      <a href="nozioni-di-base-sulla-programmazione-vbscript.html" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    3. Nozioni di base sulla programmazione in VBScript
+    3. Nozioni di base sulla programmazione VBSCRIPT
   
 
     
@@ -448,14 +450,14 @@
   
   
     <li class="md-nav__item">
-      <a href="file-di-testo.html" class="md-nav__link">
+      <a href="i-file-di-testo.html" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    6. File di testo
+    6. I file di testo
   
 
     
@@ -486,17 +488,17 @@
 
 
 <h1 id="1-introduzione">1. <span style="color: #365f91">Introduzione</span></h1>
-<p>Il PDF di questo documento è disponibile |<a href="https://1drv.ms/b/c/f53a919f43d27eb5/IQAl6lZmuDhbTLzRYv_LGP9TAbmpKXdypmWCZ6trIlGAP1U?e=73LTxe">QUI</a>|.</p>
-<p>Lo scopo di questo documento è fornire le nozioni di base del linguaggio VBScript, nonché esempi del suo utilizzo in vari campi. VBScript è un linguaggio di scripting per Windows. Può essere eseguito in vari ambienti, quali</p>
+<p>Il codice PDF di questo documento è disponibile |<a href="https://1drv.ms/b/c/f53a919f43d27eb5/IQAl6lZmuDhbTLzRYv_LGP9TAbmpKXdypmWCZ6trIlGAP1U?e=Sh9oq9">QUI</a>|.</p>
+<p>Lo scopo di questo documento è fornire le basi del linguaggio VBScript, nonché esempi di utilizzo in diversi ambiti. VBScript è un linguaggio di scripting per Windows. Può funzionare in diversi contesti, come</p>
 <ul>
-<li><em>Windows Scripting Host</em> per l’uso diretto in Windows, in particolare per la scrittura di script di amministrazione di sistema</li>
-<li><em>Internet Explorer</em>. Viene quindi utilizzato all’interno di pagine HTML, alle quali aggiunge un livello di interattività che non può essere ottenuto con il solo HTML.</li>
-<li><em>Internet Information Server</em> (IIS), il server web di Microsoft su NT/2000, e il suo equivalente, <em>Personal Web Server</em> (PWS), su Win9x. In questo caso, VBScript viene utilizzato per la programmazione web lato server, una tecnologia denominata da Microsoft ASP (<em>Active Server Pages</em>).</li>
+<li><em>Windows Scripting Host</em> per un utilizzo diretto in ambiente Windows, in particolare per la scrittura di script di amministrazione di sistema</li>
+<li><em>Internet Explorer</em>. In questo caso viene utilizzato all’interno di pagine HTML, alle quali conferisce una certa interattività impossibile da ottenere con il solo linguaggio HTML.</li>
+<li><em>Internet Information Server</em> (IIS), il server Web di Microsoft su NT/2000, e il suo equivalente <em>Personal Web Server</em> (PWS) su Win9x. In questo caso, vbscript viene utilizzato per la programmazione lato server web, una tecnologia denominata ASP (<em>Active Server Pages</em>) da Microsoft.</li>
 </ul>
-<p>Inoltre, poiché VBScript è un linguaggio derivato da Visual Basic per Windows, può fungere da introduzione a questo linguaggio — uno dei più utilizzati nell’ambiente Windows — nonché alla versione <em>applicativa</em> di VB, nota come <strong>VBA</strong> (Visual Basic for Applications). VBA è utilizzato, ad esempio, in tutta la suite Microsoft Office, in particolare in Excel. Pertanto, VBScript funge da porta d’accesso allo sviluppo in un’ampia gamma di applicazioni Windows.</p>
-<p>VBScript non è un linguaggio orientato agli oggetti, anche se presenta alcune caratteristiche orientate agli oggetti. Il concetto di ereditarietà, ad esempio, non esiste. Tuttavia, può utilizzare gli oggetti messi a sua disposizione dal contenitore in cui viene eseguito, nonché, più in generale, i componenti ActiveX disponibili sul computer Windows. È proprio questo aspetto a conferire a VBScript la sua potenza: un linguaggio intrinsecamente piuttosto limitato ma che, grazie agli oggetti messi a sua disposizione, può competere con linguaggi di scripting inizialmente più ricchi, come Perl, JavaScript e Python. Si tratta di un linguaggio semplice da imparare e da utilizzare, che apre la strada all&#x27;uso di Visual Basic per Windows, da cui deriva direttamente.</p>
-<p><strong>Questo documento non è un corso di algoritmi</strong>. Si presume che l&#x27;arte della programmazione sia già padroneggiata. È richiesta una lettura attiva. Il modo migliore per utilizzare questo documento è probabilmente quello di testare gli esempi qui forniti sul proprio computer. Il contenitore WSH è normalmente incluso di serie nel sistema Windows. La versione più recente è disponibile gratuitamente sul sito web di Microsoft (http://www.microsoft.com). Per trovare l&#x27;URL esatto per il download di WSH, è possibile cercare le parole chiave &quot;Windows Scripting&quot; utilizzando un motore di ricerca web. Tra i risultati, si dovrebbe trovare l&#x27;URL per il download di WSH.</p>
-<p>Serge Tahé, gennaio 2002</p>
+<p>Inoltre, essendo VBSCRIPT un linguaggio derivato da Visual Basic per Windows, può fungere da introduzione a questo linguaggio, tra i più diffusi nell’ambiente Windows, nonché alla versione <em>Application</em> di VB, denominata <strong>VBA</strong> (Visual Basic per Applicazioni). VBA è utilizzato, ad esempio, in tutta la suite Office di Microsoft, in particolare in Excel. Pertanto, VBSCRIPT rappresenta una via d’accesso allo sviluppo in un vasto ambito di applicazioni Windows.</p>
+<p>VBScript non è un linguaggio orientato agli oggetti, anche se ne presenta alcune caratteristiche. Il concetto di ereditarietà, ad esempio, non esiste. Può tuttavia utilizzare gli oggetti messi a sua disposizione dal contenitore in cui viene eseguito, nonché, più in generale, i componenti ActiveX disponibili sul sistema Windows. È proprio questo aspetto a conferire la sua potenza a VBScript, un linguaggio che intrinsecamente è piuttosto limitato ma che, grazie agli oggetti messi a sua disposizione, può competere con linguaggi di scripting inizialmente più ricchi come Perl, JavaScript e Python. Si tratta di un linguaggio semplice da imparare e da utilizzare, che apre la strada all’uso di Visual Basic per Windows, da cui deriva direttamente.</p>
+<p><strong>Questo documento non è un corso di algoritmi</strong>. Si presume che l’arte della programmazione sia già acquisita. È necessaria una lettura attiva. Il modo migliore per utilizzare questo documento è probabilmente quello di provare sul proprio computer gli esempi ivi riportati. Il contenitore WSH è normalmente fornito di serie con il sistema Windows. La versione più recente è disponibile gratuitamente sul sito di Microsoft (http://www.microsoft.com). Per trovare l’esatto URL che consente il download di WSH, è possibile cercare le parole chiave «Windows Scripting» con un motore di ricerca sul Web. Tra i risultati, si dovrebbe trovare il file URL per il download di WSH.</p>
+<p><strong>Serge Tahé</strong>, gennaio 2002</p>
 
 
 
